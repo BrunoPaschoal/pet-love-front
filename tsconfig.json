@@ -1,6 +1,20 @@
 {
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  }
+    "esModuleInterop": true,
+    "jsx": "react-native",
+    "lib": [
+      "es6"
+    ],
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "strict": true,
+    "target": "es6"
+  },
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ],
+  "extends": "expo/tsconfig.base"
 }
