@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
-import { View, StyleSheet, Button } from "react-native";
+import { Button } from "react-native";
 import { propsStack } from "../../../../routes/interfaces/propsNavigationStack";
+import * as S from "./style";
 
 export const LoginScreen = () => {
   const navigation = useNavigation<propsStack>();
@@ -10,18 +11,9 @@ export const LoginScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Button title="Cadastro" onPress={() => handlePress()} />
-    </View>
+    <S.Container>
+      <S.Title>TELA DE LOGIN</S.Title>
+      <Button title="Ir para Cadastro" onPress={() => handlePress()} />
+    </S.Container>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#dbdbdb",
-    color: "#2e2e2e",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

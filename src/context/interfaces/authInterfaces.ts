@@ -12,7 +12,7 @@ export interface LoginArgs {
 }
 
 export interface UserContextType {
-  user: User;
+  user: User | undefined;
   login: ({ email, password }: LoginArgs) => void;
   logout: () => void;
 }

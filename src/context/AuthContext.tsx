@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import { LoginArgs, User, UserContextType } from "./interfaces/authInterfaces";
 
 export const UserContext = createContext<UserContextType>({
-  user: null,
+  user: undefined,
   login: ({ email, password }: LoginArgs) => {},
   logout: () => {},
 });
@@ -12,10 +12,9 @@ export const UserContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [user, setUser] = useState<User>(null);
+  const [user, setUser] = useState<User>();
 
   const login = async ({ email, password }: LoginArgs) => {
-    //Chamada na API
     setUser({
       id: "3",
       name: "Bruno Rocha",
@@ -26,7 +25,7 @@ export const UserContextProvider = ({
   };
 
   const logout = async () => {
-    setUser(null);
+    setUser(undefined);
   };
 
   return (

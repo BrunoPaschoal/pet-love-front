@@ -1,11 +1,14 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { PublicRoutes } from "./src/routes/public.routes";
+import { Main } from "./src";
+import { ThemeProvider } from "./src/themes/provider/ThemeProvider";
 
 export default function App() {
   return (
     <NavigationContainer>
-      <PublicRoutes />
+      <ThemeProvider>
+        <Main />
+      </ThemeProvider>
     </NavigationContainer>
   );
 }
