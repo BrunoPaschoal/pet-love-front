@@ -1,7 +1,16 @@
 export const defaultAppTheme = {
   colors: {
-    primary: "#000",
-    secondary: "#999",
+    primary: "#F18484",
+    secondary: "#FFAD60",
+    tertiary: "#0D1729",
+    primary_light: "#F89C90",
+    secondary_light: "#FFEDDD",
+    tertiary_light: "#11264E",
+    gray_01: "#F4F4F4",
+    gray_02: "#CBCCCE",
+    gray_03: "#7C7C7C",
+    gray_04: "#5D636C",
+    gray_05: "#383D46",
     background: "#fff",
     white: "#fff",
   },
