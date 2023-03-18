@@ -12,7 +12,7 @@ export const LoginScreen = () => {
 
   return (
     <S.Container>
-      <S.Title>TELA DE LOGIN</S.Title>
+      <S.Title>Tela de Login</S.Title>
       <Button title="Ir para Cadastro" onPress={() => handlePressToLogin()} />
     </S.Container>
   );

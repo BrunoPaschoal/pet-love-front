@@ -12,7 +12,7 @@ export const WelcomeScreen = () => {
 
   return (
     <S.Container>
-      <S.Title>TELA DE BOAS VINDAS</S.Title>
+      <S.Title>Tela de boas vindas</S.Title>
       <Button title="ir para o login" onPress={() => handlePressToLogin()} />
     </S.Container>
   );

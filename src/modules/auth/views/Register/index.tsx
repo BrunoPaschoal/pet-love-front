@@ -12,7 +12,7 @@ export const SignupScreen = () => {
 
   return (
     <S.Container>
-      <S.Title>TELA DE CADASTRO</S.Title>
+      <S.Title>Tela de cadastro</S.Title>
       <Button
         title="Voltar para o login"
         onPress={() => handlePressToLogin()}
