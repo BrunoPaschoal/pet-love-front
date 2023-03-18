@@ -6,9 +6,17 @@ export const Welcome = () => {
   const navigation = useNavigation<propsStack>();
 
   const handlePressToLogin = () => {
-    // navigation.navigate("Signup");
-    console.warn("Clicou");
+    navigation.navigate("Signup");
   };
 
-  return <WelcomeView handlePressToLogin={handlePressToLogin} />;
+  const handlePressToRegister = () => {
+    navigation.navigate("Signup");
+  };
+
+  return (
+    <WelcomeView
+      handlePressToLogin={handlePressToLogin}
+      handlePressToRegister={handlePressToRegister}
+    />
+  );
 };

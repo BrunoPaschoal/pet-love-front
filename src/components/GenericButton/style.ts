@@ -1,7 +1,12 @@
+import { TouchableOpacityProps } from "react-native";
 import styled, { css } from "styled-components/native";
 
-export const Button = styled.TouchableOpacity`
-  ${({ theme: { colors } }) => css`
+interface ButtonProps extends TouchableOpacityProps {
+  customMaxWidth?: string;
+}
+
+export const Button = styled.TouchableOpacity<ButtonProps>`
+  ${({ theme: { colors }, customMaxWidth }) => css`
     background-color: ${colors.primary};
     height: 45px;
     border-radius: 5px;
@@ -9,6 +14,7 @@ export const Button = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     width: 100%;
+    max-width: ${customMaxWidth ? customMaxWidth : "100%"};
   `}
 `;
 

@@ -3,18 +3,64 @@ import styled, { css } from "styled-components/native";
 export const Container = styled.View`
   ${({ theme: { colors } }) => css`
     flex: 1;
-    align-items: center;
-    justify-content: center;
-    padding: 0 30px 0 30px;
     background-color: ${colors.background};
   `}
+`;
+
+export const Image = styled.Image`
+  margin-bottom: 40px;
+  width: 800px;
 `;
 
 export const Title = styled.Text`
   ${({ theme: { colors, fontSizes, fonts } }) => css`
     font-size: ${fontSizes.heading_h1};
+    font-family: ${fonts.PoppinsSemiBold};
+    margin-bottom: 5px;
+    color: ${colors.tertiary_light};
+  `}
+`;
+
+export const Content = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 75px;
+  padding: 0 20px 0 20px;
+`;
+
+export const FooterContent = styled.View`
+  ${({ theme: { colors } }) => css`
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: 45px;
+  `}
+`;
+
+export const FooterText = styled.Text`
+  ${({ theme: { colors, fontSizes, fonts } }) => css`
+    font-size: ${fontSizes.heading_h4};
+    font-family: ${fonts.PoppinsMedium};
+    color: ${colors.tertiary};
+  `}
+`;
+
+export const LoginLinkText = styled.Text`
+  ${({ theme: { colors, fontSizes, fonts } }) => css`
+    font-size: ${fontSizes.heading_h4};
     font-family: ${fonts.PoppinsBold};
-    margin-bottom: 20px;
-    color: ${colors.secondary};
+    margin-left: 3px;
+    color: ${colors.tertiary};
+  `}
+`;
+
+export const Description = styled.Text`
+  ${({ theme: { colors, fontSizes, fonts } }) => css`
+    font-size: ${fontSizes.heading_h4};
+    font-family: ${fonts.PoppinsMedium};
+    text-align: center;
+    max-width: 180px;
+    margin-bottom: 60px;
+    color: ${colors.tertiary};
   `}
 `;
