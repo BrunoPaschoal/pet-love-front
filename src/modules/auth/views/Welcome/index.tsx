@@ -1,19 +1,14 @@
 import { useNavigation } from "@react-navigation/native";
-import { Button } from "react-native";
 import { propsStack } from "../../../../routes/interfaces/propsNavigationStack";
-import * as S from "./style";
+import { WelcomeView } from "./WelcomeView";
 
-export const WelcomeScreen = () => {
+export const Welcome = () => {
   const navigation = useNavigation<propsStack>();
 
   const handlePressToLogin = () => {
-    navigation.navigate("Login");
+    // navigation.navigate("Signup");
+    console.warn("Clicou");
   };
 
-  return (
-    <S.Container>
-      <S.Title>Tela de boas vindas</S.Title>
-      <Button title="ir para o login" onPress={() => handlePressToLogin()} />
-    </S.Container>
-  );
+  return <WelcomeView handlePressToLogin={handlePressToLogin} />;
 };

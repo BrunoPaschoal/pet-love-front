@@ -26,4 +26,7 @@ export const defaultAppTheme = {
     PoppinsSemiBold: "Poppins-SemiBold",
     PoppinsBold: "Poppins-Bold",
   },
+  margins: {
+    screenSideMargin: "25px",
+  },
 };
