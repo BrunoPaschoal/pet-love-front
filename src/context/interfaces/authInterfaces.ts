@@ -7,12 +7,17 @@ export interface User {
 }
 
 export interface LoginArgs {
+  name: string;
+  id: string;
   email: string;
-  password: string;
+  avatar: string;
+  token: string;
 }
 
-export interface UserContextType {
+export interface AuthContextType {
   user: User | undefined;
-  login: ({ email, password }: LoginArgs) => void;
+  login: ({ email, avatar, id, name, token }: LoginArgs) => void;
   logout: () => void;
+  signed: boolean;
+  loading: boolean;
 }

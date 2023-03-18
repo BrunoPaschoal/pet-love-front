@@ -1,26 +1,53 @@
-import React, { createContext, useState } from "react";
-import { LoginArgs, User, UserContextType } from "./interfaces/authInterfaces";
+import React, { createContext, useEffect, useState } from "react";
+import { LoginArgs, User, AuthContextType } from "./interfaces/authInterfaces";
 
-export const UserContext = createContext<UserContextType>({
+export const AuthContext = createContext<AuthContextType>({
   user: undefined,
-  login: ({ email, password }: LoginArgs) => {},
+  login: ({ email, avatar, id, name, token }: LoginArgs) => {},
   logout: () => {},
+  signed: false,
+  loading: true,
 });
 
-export const UserContextProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
-  const [user, setUser] = useState<User>();
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const [user, setUser] = useState<User | undefined>();
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const login = async ({ email, password }: LoginArgs) => {
+  async function waitSeconds() {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 2000);
+    });
+  }
+
+  async function loadStorage() {
+    setLoading(true);
+    // Lógica para buscar no storage
+
+    await waitSeconds();
+
     setUser({
-      id: "3",
+      id: "1",
       name: "Bruno Rocha",
       email: "bruno.rocha.dev@outlook.com",
       avatar: "http://image.com",
       token: "d9si90da89fuuysd8f7970987sf890s7f",
+    });
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    loadStorage();
+  }, []);
+
+  const login = async ({ id, email, name, avatar, token }: LoginArgs) => {
+    setUser({
+      id: id,
+      name: name,
+      email: email,
+      avatar: avatar,
+      token: token,
     });
   };
 
@@ -29,8 +56,10 @@ export const UserContextProvider = ({
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider
+      value={{ signed: !!user, loading, user, login, logout }}
+    >
       {children}
-    </UserContext.Provider>
+    </AuthContext.Provider>
   );
 };
