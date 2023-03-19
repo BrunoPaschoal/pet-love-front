@@ -6,7 +6,7 @@ export const Welcome = () => {
   const navigation = useNavigation<propsStack>();
 
   const handlePressToLogin = () => {
-    navigation.navigate("Signup");
+    navigation.navigate("Login");
   };
 
   const handlePressToRegister = () => {

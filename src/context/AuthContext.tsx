@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
         resolve();
-      }, 2000);
+      }, 1000);
     });
   }
 

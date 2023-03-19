@@ -1,19 +1,22 @@
 import { useNavigation } from "@react-navigation/native";
-import { Button } from "react-native";
+
 import { propsStack } from "../../../../routes/interfaces/propsNavigationStack";
-import * as S from "./style";
+import { useForm } from "react-hook-form";
+import { LoginScreen } from "./LoginView";
 
-export const LoginScreen = () => {
+export const Login = () => {
   const navigation = useNavigation<propsStack>();
+  const { handleSubmit, control } = useForm({ mode: "onSubmit" });
 
-  const handlePressToLogin = () => {
-    navigation.navigate("Signup");
+  const handleSubmitLogin = (values: any) => {
+    console.warn(values);
   };
 
   return (
-    <S.Container>
-      <S.Title>Tela de Login</S.Title>
-      <Button title="Ir para Cadastro" onPress={() => handlePressToLogin()} />
-    </S.Container>
+    <LoginScreen
+      handleSubmitLogin={handleSubmit(handleSubmitLogin)}
+      control={control}
+      hidePassword={false}
+    />
   );
 };
