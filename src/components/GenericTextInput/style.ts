@@ -1,3 +1,4 @@
+import { TextInputMask } from "react-native-masked-text";
 import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
@@ -25,7 +26,16 @@ export const InputContainer = styled.View`
 `;
 
 export const TextInput = styled.TextInput`
-  ${({ theme: { colors, fonts } }) => css`
+  ${({ theme: { fonts } }) => css`
+    flex: 1;
+    height: 50px;
+    padding-left: 20px;
+    font-family: ${fonts.PoppinsRegular};
+  `}
+`;
+
+export const MaskedTextInput = styled(TextInputMask)`
+  ${({ theme: { fonts } }) => css`
     flex: 1;
     height: 50px;
     padding-left: 20px;
