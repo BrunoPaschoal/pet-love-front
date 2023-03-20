@@ -6,10 +6,14 @@ export const Container = styled.View`
   margin-bottom: 15px;
 `;
 
-export const InputLabel = styled.Text`
-  ${({ theme: { colors, fonts } }) => css`
+interface InputLabelProps {
+  isDisable?: boolean;
+}
+
+export const InputLabel = styled.Text<InputLabelProps>`
+  ${({ theme: { colors, fonts }, isDisable }) => css`
     font-family: ${fonts.PoppinsMedium};
-    color: ${colors.gray_04};
+    color: ${isDisable ? colors.gray_02 : colors.gray_04};
     margin-bottom: 3px;
     font-size: 14px;
   `}
@@ -52,5 +56,9 @@ export const IconContainer = styled.TouchableOpacity`
 `;
 
 export const TextError = styled.Text`
-  color: red;
+  ${({ theme: { fonts, fontSizes, colors } }) => css`
+    font-size: ${fontSizes.p4}
+    font-family: ${fonts.PoppinsMedium};
+    color: ${colors.failure};
+  `}
 `;

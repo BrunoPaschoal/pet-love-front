@@ -13,6 +13,10 @@ interface GenericTextInputProps {
   isRequired?: boolean;
   errorMessage?: string;
   mask?: TextInputMaskTypeProp;
+  validateField?: (value: string) => any;
+  validateFailMessage?: string;
+  isDisable?: boolean;
+  placeholder?: string;
 }
 
 export const GenericTextInput = ({
@@ -25,6 +29,10 @@ export const GenericTextInput = ({
   isRequired,
   errorMessage,
   mask,
+  validateFailMessage,
+  validateField,
+  isDisable,
+  placeholder,
 }: GenericTextInputProps) => {
   return (
     <Controller
@@ -34,6 +42,12 @@ export const GenericTextInput = ({
         required: {
           value: isRequired || false,
           message: errorMessage || "Campo obrigatório",
+        },
+        validate: (value) => {
+          if (validateField)
+            return (
+              validateField(value) || validateFailMessage || "Formato inválido"
+            );
         },
       }}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
@@ -46,6 +60,9 @@ export const GenericTextInput = ({
           icon={icon}
           onIconPress={onIconPress}
           mask={mask}
+          isDisable={isDisable}
+          placeholder={placeholder}
+          isRequired={isRequired}
         />
       )}
     />

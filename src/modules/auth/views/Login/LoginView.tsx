@@ -10,6 +10,8 @@ interface LoginScreenProps {
   icon?: ReactNode;
   control: Control<FieldValues, any> | undefined;
   hidePassword: boolean;
+  validateEmailField?: (value: string) => any;
+  validateFailMessage?: string;
 }
 
 export const LoginScreen = ({
@@ -17,6 +19,8 @@ export const LoginScreen = ({
   hidePassword,
   oIconPress,
   handleSubmitLogin,
+  validateFailMessage,
+  validateEmailField,
 }: LoginScreenProps) => {
   return (
     <S.Container>
@@ -26,6 +30,9 @@ export const LoginScreen = ({
           label={"E-mail"}
           control={control}
           name={"e-mail"}
+          validateFailMessage={validateFailMessage}
+          validateField={validateEmailField}
+          placeholder="exemplo@email.com"
           isRequired
         />
         <GenericTextInput
@@ -34,6 +41,8 @@ export const LoginScreen = ({
           name={"password"}
           hideInputValue={hidePassword}
           onIconPress={oIconPress}
+          placeholder="Digite sua senha"
+          isRequired
         />
         <GenericButton title="Login" onPressButton={handleSubmitLogin} />
       </S.Content>
