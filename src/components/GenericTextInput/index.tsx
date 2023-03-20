@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Control, Controller, FieldValues } from "react-hook-form";
+import { TextInputMaskTypeProp } from "react-native-masked-text";
 import { InputTextComponent } from "./InputTextComponent";
 
 interface GenericTextInputProps {
@@ -11,6 +12,7 @@ interface GenericTextInputProps {
   control: Control<FieldValues, any> | undefined;
   isRequired?: boolean;
   errorMessage?: string;
+  mask?: TextInputMaskTypeProp;
 }
 
 export const GenericTextInput = ({
@@ -22,6 +24,7 @@ export const GenericTextInput = ({
   name,
   isRequired,
   errorMessage,
+  mask,
 }: GenericTextInputProps) => {
   return (
     <Controller
@@ -42,6 +45,7 @@ export const GenericTextInput = ({
           hideInputValue={hideInputValue}
           icon={icon}
           onIconPress={onIconPress}
+          mask={mask}
         />
       )}
     />
