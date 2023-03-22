@@ -11,7 +11,6 @@ interface LoginScreenProps {
   control: Control<FieldValues, any> | undefined;
   hidePassword: boolean;
   validateEmailField?: (value: string) => any;
-  validateFailMessage?: string;
 }
 
 export const LoginScreen = ({
@@ -19,7 +18,6 @@ export const LoginScreen = ({
   hidePassword,
   oIconPress,
   handleSubmitLogin,
-  validateFailMessage,
   validateEmailField,
 }: LoginScreenProps) => {
   return (
@@ -30,7 +28,7 @@ export const LoginScreen = ({
           label={"E-mail"}
           control={control}
           name={"e-mail"}
-          validateFailMessage={validateFailMessage}
+          validateFailMessage="Formato de e-mail inválido"
           validateField={validateEmailField}
           placeholder="exemplo@email.com"
           isRequired

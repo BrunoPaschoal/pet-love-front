@@ -23,7 +23,6 @@ export const Login = () => {
       handleSubmitLogin={handleSubmit(handleSubmitLogin)}
       control={control}
       hidePassword={false}
-      validateFailMessage="Formato de e-mail inválido"
       validateEmailField={validateEmail}
     />
   );
