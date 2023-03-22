@@ -3,6 +3,7 @@ import { GenericButton } from "./../../../../components/GenericButton";
 import { GenericTextInput } from "../../../../components/GenericTextInput";
 import { Control, FieldValues } from "react-hook-form";
 import { ReactNode } from "react";
+import ClosedEye from "../../../../../assets/icons/closed-eye.svg";
 
 interface LoginScreenProps {
   oIconPress?: () => void;
@@ -40,6 +41,7 @@ export const LoginScreen = ({
           hideInputValue={hidePassword}
           onIconPress={oIconPress}
           placeholder="Digite sua senha"
+          icon={<ClosedEye width={25} height={35} fill={"#11264E"} />}
           isRequired
         />
         <GenericButton title="Login" onPressButton={handleSubmitLogin} />

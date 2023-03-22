@@ -52,7 +52,6 @@ export const IconContainer = styled.TouchableOpacity`
   justify-content: center;
   height: 50px;
   width: 50px;
-  border: solid red 1px;
 `;
 
 export const TextError = styled.Text`
