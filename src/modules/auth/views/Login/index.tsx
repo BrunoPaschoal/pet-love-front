@@ -28,8 +28,7 @@ export const Login = () => {
 
   return (
     <LoginScreen
-      handleSubmitLogin={toasst}
-      // handleSubmitLogin={handleSubmit(handleSubmitLogin)}
+      handleSubmitLogin={handleSubmit(handleSubmitLogin)}
       control={control}
       hidePassword={false}
       validateEmailField={validateEmail}
