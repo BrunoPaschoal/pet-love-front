@@ -3,6 +3,7 @@ import { SignupScreen } from "./views/Register";
 import { Welcome } from "./views/Welcome";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { propsNavigationStack } from "../../routes/interfaces/propsNavigationStack";
+import { Signup } from "./views/Signup";
 
 const Stack = createNativeStackNavigator<propsNavigationStack>();
 
@@ -14,7 +15,7 @@ export const Auth = () => {
     >
       <Stack.Screen name="Welcome" component={Welcome} />
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Signup" component={SignupScreen} />
+      <Stack.Screen name="Signup" component={Signup} />
     </Stack.Navigator>
   );
 };

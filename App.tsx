@@ -5,6 +5,8 @@ import { ThemeProvider } from "./src/themes/provider/ThemeProvider";
 import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { AuthProvider } from "./src/context/AuthContext";
+import { ToastProvider } from "react-native-toast-notifications";
+import { CustomToast } from "./src/components/CustomToast";
 
 export default function App() {
   useEffect(() => {
@@ -18,8 +20,14 @@ export default function App() {
     <AuthProvider>
       <NavigationContainer>
         <ThemeProvider>
-          <StatusBar style="dark" />
-          <Main />
+          <ToastProvider
+            duration={20000000}
+            renderToast={CustomToast}
+            offsetBottom={30}
+          >
+            <StatusBar style="dark" />
+            <Main />
+          </ToastProvider>
         </ThemeProvider>
       </NavigationContainer>
     </AuthProvider>

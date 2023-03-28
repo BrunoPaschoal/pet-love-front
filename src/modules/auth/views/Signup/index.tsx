@@ -3,22 +3,16 @@ import validator from "validator";
 
 import { propsStack } from "../../../../routes/interfaces/propsNavigationStack";
 import { useForm } from "react-hook-form";
-import { LoginScreen } from "./LoginView";
+import { SignupView } from "./SignupView";
 import { useToast } from "react-native-toast-notifications";
-export const Login = () => {
+
+export const Signup = () => {
   const navigation = useNavigation<propsStack>();
   const { handleSubmit, control } = useForm({ mode: "onSubmit" });
   const toast = useToast();
 
   const handleSubmitLogin = (values: any) => {
-    // Logic
-    toast.show("Meu toast porra!");
-  };
-
-  const toasst = () => {
-    toast.show("My Cystom Description", {
-      type: "",
-    });
+    console.log("Valores dos inputs: ", values);
   };
 
   const validateEmail = (email: string): boolean => {
@@ -26,13 +20,22 @@ export const Login = () => {
     return true;
   };
 
+  const validatePassword = (password: string): boolean => {
+    if (!validator.isLength(password, { min: 8 })) {
+      return false;
+    }
+    const regex =
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+    return regex.test(password);
+  };
+
   return (
-    <LoginScreen
-      handleSubmitLogin={toasst}
-      // handleSubmitLogin={handleSubmit(handleSubmitLogin)}
+    <SignupView
+      handleSubmitLogin={handleSubmit(handleSubmitLogin)}
       control={control}
       hidePassword={false}
       validateEmailField={validateEmail}
+      validatePasswordField={validatePassword}
     />
   );
 };
