@@ -3,26 +3,30 @@ import { GenericButton } from "../../../../components/GenericButton";
 import { GenericTextInput } from "../../../../components/GenericTextInput";
 import { Control, FieldValues } from "react-hook-form";
 import { ReactNode } from "react";
-import ClosedEye from "../../../../../assets/icons/closed-eye.svg";
 
-interface LoginScreenProps {
+interface SignupScreenProps {
   oIconPress?: () => void;
-  handleSubmitLogin: () => void;
-  icon?: ReactNode;
+  handleSubmitSignup: () => void;
+  passwordIcon?: ReactNode;
   control: Control<FieldValues, any> | undefined;
   hidePassword: boolean;
   validateEmailField?: (value: string) => any;
   validatePasswordField: (value: string) => any;
+  validateCellphoneField: (value: string) => any;
+  isLoading: boolean;
 }
 
 export const SignupView = ({
   control,
   hidePassword,
+  isLoading,
+  passwordIcon,
   oIconPress,
-  handleSubmitLogin,
+  handleSubmitSignup,
   validatePasswordField,
+  validateCellphoneField,
   validateEmailField,
-}: LoginScreenProps) => {
+}: SignupScreenProps) => {
   return (
     <S.Container>
       <S.Title>Cadastre sua conta</S.Title>
@@ -35,9 +39,19 @@ export const SignupView = ({
           isRequired
         />
         <GenericTextInput
+          label={"Celular"}
+          control={control}
+          name={"phone"}
+          placeholder="(00) 0 0000-0000"
+          validateFailMessage="Formato inválido."
+          validateField={validateCellphoneField}
+          mask="cel-phone"
+          isRequired
+        />
+        <GenericTextInput
           label={"E-mail"}
           control={control}
-          name={"e-mail"}
+          name={"email"}
           validateFailMessage="Formato de e-mail inválido"
           validateField={validateEmailField}
           placeholder="exemplo@email.com"
@@ -49,13 +63,17 @@ export const SignupView = ({
           name={"password"}
           hideInputValue={hidePassword}
           onIconPress={oIconPress}
-          validateFailMessage="A senha de conter pelo menos 8 caracteres, letras maiúsculas e minúsculas e caracteres especiais."
+          validateFailMessage="A senha de conter pelo menos 8 caracteres, letras maiúsculas, minúsculas e caracteres especiais."
           validateField={validatePasswordField}
           placeholder="Digite sua senha"
-          icon={<ClosedEye width={25} height={35} fill={"#11264E"} />}
+          icon={passwordIcon}
           isRequired
         />
-        <GenericButton title="Criar conta" onPressButton={handleSubmitLogin} />
+        <GenericButton
+          title="Criar conta"
+          onPressButton={handleSubmitSignup}
+          isLoading={isLoading}
+        />
       </S.Content>
     </S.Container>
   );

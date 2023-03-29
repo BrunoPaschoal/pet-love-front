@@ -5,10 +5,12 @@ import { propsStack } from "../../../../routes/interfaces/propsNavigationStack";
 import { useForm } from "react-hook-form";
 import { LoginScreen } from "./LoginView";
 import { useToast } from "react-native-toast-notifications";
+import { useState } from "react";
 export const Login = () => {
   const navigation = useNavigation<propsStack>();
   const { handleSubmit, control } = useForm({ mode: "onSubmit" });
   const toast = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmitLogin = (values: any) => {
     // Logic

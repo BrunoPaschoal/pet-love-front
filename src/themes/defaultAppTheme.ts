@@ -6,7 +6,7 @@ export const defaultAppTheme = {
     primary_light: "#F89C90",
     secondary_light: "#FFEDDD",
     tertiary_light: "#11264E",
-    failure: "#dc3545",
+    failure: "#FF4355",
     success: "#6BC67C",
     warning: "#FFB084",
     background: "#fff",

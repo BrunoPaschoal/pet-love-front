@@ -21,7 +21,7 @@ export default function App() {
       <NavigationContainer>
         <ThemeProvider>
           <ToastProvider
-            duration={20000000}
+            duration={5000}
             renderToast={CustomToast}
             offsetBottom={30}
           >
