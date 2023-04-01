@@ -50,7 +50,7 @@ export const Login = () => {
     <LoginScreen
       handleSubmitLogin={handleSubmit(handleSubmitLogin)}
       control={control}
-      hidePassword={false}
+      hidePassword={isPasswordHide}
       validateEmailField={validateEmail}
       passwordIcon={getPasswordIcons(isPasswordHide)}
       oIconPress={hideOrShowPassword}

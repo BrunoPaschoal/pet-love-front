@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { PublicRoutes } from "./routes/public.routes";
 import * as SplashScreen from "expo-splash-screen";
+import { PrivateRoutes } from "./routes/private.routes";
 
 export const Main = () => {
   const { signed, loading } = useContext(AuthContext);
@@ -14,13 +15,13 @@ export const Main = () => {
     "Poppins-Bold": require("../assets/fonts/Poppins-Bold.ttf"),
   });
 
-  if (loading && !fontsLoaded) {
+  if (loading || !fontsLoaded) {
     return null;
   }
 
-  if (fontsLoaded && !loading) {
+  if (fontsLoaded || !loading) {
     SplashScreen.hideAsync();
   }
 
-  return signed ? <PublicRoutes /> : <PublicRoutes />;
+  return signed ? <PrivateRoutes /> : <PublicRoutes />;
 };
