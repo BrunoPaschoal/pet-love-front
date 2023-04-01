@@ -13,28 +13,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | undefined>();
   const [loading, setLoading] = useState<boolean>(true);
 
-  async function waitSeconds() {
-    return new Promise<void>((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 1000);
-    });
-  }
-
   async function loadStorage() {
-    setLoading(true);
-    // Lógica para buscar no storage
-
-    await waitSeconds();
-
-    setUser({
-      id: "1",
-      name: "Bruno Rocha",
-      email: "bruno.rocha.dev@outlook.com",
-      avatar: "http://image.com",
-      token: "d9si90da89fuuysd8f7970987sf890s7f",
-    });
+    // Lógica para buscar no storage e salvar no estado caso tenha usuário
     setLoading(false);
+    return null;
   }
 
   useEffect(() => {
@@ -53,6 +35,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const logout = async () => {
     setUser(undefined);
+    // Criar funcão para limpar assync storage aqui
   };
 
   return (

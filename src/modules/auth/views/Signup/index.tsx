@@ -5,29 +5,34 @@ import { useForm } from "react-hook-form";
 import { SignupView } from "./SignupView";
 import { useToast } from "react-native-toast-notifications";
 import useAxios from "./../../../../hooks/useAxios";
-import ClosedEye from "../../../../../assets/icons/closed-eye.svg";
-import Eye from "../../../../../assets/icons/eye.svg";
 import { throwError } from "../../../../helpers/errorHandler";
-import theme from "../../../../themes";
 import {
   validateCellphone,
   validateEmail,
   validatePassword,
 } from "../../../../helpers/validadeHelper";
+import { SignupResponseType } from "./interfaces/signupResponseType";
+import { getPasswordIcons } from "../../../../helpers/getPasswordIcons";
+import { SignupFormSubmitType } from "./interfaces/signupFormSubmitType";
 
 export const Signup = () => {
-  const { handleSubmit, control } = useForm({ mode: "onSubmit" });
+  const { handleSubmit, control } = useForm<SignupFormSubmitType>({
+    mode: "onSubmit",
+  });
   const navigation = useNavigation<propsStack>();
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordHide, setPasswordHide] = useState(true);
   const toast = useToast();
   const api = useAxios();
 
-  const handleSubmitSignup = async (values: any) => {
+  const handleSubmitSignup = async (values: SignupFormSubmitType) => {
     try {
       setIsLoading(true);
-      const response = await api.post("/users", { ...values });
-      console.log(response.data);
+      const { data } = await api.post<SignupResponseType>("/users", {
+        ...values,
+      });
+
+      navigation.navigate("Login");
     } catch (error) {
       throwError(error, toast);
     } finally {
@@ -39,22 +44,6 @@ export const Signup = () => {
     setPasswordHide(!isPasswordHide);
   };
 
-  const getPasswordIcons = useCallback(() => {
-    const iconsProps = {
-      width: 25,
-      height: 35,
-      fill: theme["defaultAppTheme"].colors.tertiary_light,
-    };
-
-    if (isPasswordHide) {
-      return <ClosedEye {...iconsProps} />;
-    }
-
-    if (!isPasswordHide) {
-      return <Eye {...iconsProps} />;
-    }
-  }, [isPasswordHide]);
-
   return (
     <SignupView
       handleSubmitSignup={handleSubmit(handleSubmitSignup)}
@@ -65,7 +54,7 @@ export const Signup = () => {
       hidePassword={isPasswordHide}
       isLoading={isLoading}
       oIconPress={hideOrShowPassword}
-      passwordIcon={getPasswordIcons()}
+      passwordIcon={getPasswordIcons(isPasswordHide)}
     />
   );
 };

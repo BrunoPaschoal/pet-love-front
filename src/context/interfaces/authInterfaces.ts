@@ -1,16 +1,16 @@
 export interface User {
   name: string;
   email: string;
-  id: string;
+  id: number;
   token: string;
-  avatar: string;
+  avatar: string | null;
 }
 
 export interface LoginArgs {
   name: string;
-  id: string;
+  id: number;
   email: string;
-  avatar: string;
+  avatar: string | null;
   token: string;
 }
 

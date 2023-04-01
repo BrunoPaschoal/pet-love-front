@@ -3,20 +3,24 @@ import { GenericButton } from "./../../../../components/GenericButton";
 import { GenericTextInput } from "../../../../components/GenericTextInput";
 import { Control, FieldValues } from "react-hook-form";
 import { ReactNode } from "react";
-import ClosedEye from "../../../../../assets/icons/closed-eye.svg";
+import { LoginFormSubmitType } from "./interfaces/loginFormSubmitType";
 
 interface LoginScreenProps {
   oIconPress?: () => void;
   handleSubmitLogin: () => void;
+  validateEmailField?: (value: string) => void;
+  control: Control<LoginFormSubmitType, any> | undefined;
+  passwordIcon?: ReactNode;
   icon?: ReactNode;
-  control: Control<FieldValues, any> | undefined;
   hidePassword: boolean;
-  validateEmailField?: (value: string) => any;
+  isLoading: boolean;
 }
 
 export const LoginScreen = ({
   control,
   hidePassword,
+  isLoading,
+  passwordIcon,
   oIconPress,
   handleSubmitLogin,
   validateEmailField,
@@ -28,7 +32,7 @@ export const LoginScreen = ({
         <GenericTextInput
           label={"E-mail"}
           control={control}
-          name={"e-mail"}
+          name={"email"}
           validateFailMessage="Formato de e-mail inválido"
           validateField={validateEmailField}
           placeholder="exemplo@email.com"
@@ -41,10 +45,14 @@ export const LoginScreen = ({
           hideInputValue={hidePassword}
           onIconPress={oIconPress}
           placeholder="Digite sua senha"
-          icon={<ClosedEye width={25} height={35} fill={"#11264E"} />}
+          icon={passwordIcon}
           isRequired
         />
-        <GenericButton title="Login" onPressButton={handleSubmitLogin} />
+        <GenericButton
+          title="Login"
+          onPressButton={handleSubmitLogin}
+          isLoading={isLoading}
+        />
       </S.Content>
     </S.Container>
   );

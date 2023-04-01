@@ -3,16 +3,17 @@ import { GenericButton } from "../../../../components/GenericButton";
 import { GenericTextInput } from "../../../../components/GenericTextInput";
 import { Control, FieldValues } from "react-hook-form";
 import { ReactNode } from "react";
+import { SignupFormSubmitType } from "./interfaces/signupFormSubmitType";
 
 interface SignupScreenProps {
   oIconPress?: () => void;
   handleSubmitSignup: () => void;
   passwordIcon?: ReactNode;
-  control: Control<FieldValues, any> | undefined;
+  control: Control<SignupFormSubmitType, any> | undefined;
   hidePassword: boolean;
-  validateEmailField?: (value: string) => any;
-  validatePasswordField: (value: string) => any;
-  validateCellphoneField: (value: string) => any;
+  validateEmailField?: (value: string) => void;
+  validatePasswordField: (value: string) => void;
+  validateCellphoneField: (value: string) => void;
   isLoading: boolean;
 }
 

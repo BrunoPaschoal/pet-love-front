@@ -9,7 +9,7 @@ interface GenericTextInputProps {
   onIconPress?: () => void;
   hideInputValue?: boolean;
   name: string;
-  control: Control<FieldValues, any> | undefined;
+  control: Control<any, any> | undefined;
   isRequired?: boolean;
   errorMessage?: string;
   mask?: TextInputMaskTypeProp;
