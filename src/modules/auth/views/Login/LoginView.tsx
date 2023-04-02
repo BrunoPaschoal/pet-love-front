@@ -4,14 +4,16 @@ import { GenericTextInput } from "../../../../components/GenericTextInput";
 import { Control, FieldValues } from "react-hook-form";
 import { ReactNode } from "react";
 import { LoginFormSubmitType } from "./interfaces/loginFormSubmitType";
+import { CallToActionText } from "../../components/CallToActionText";
 
 interface LoginScreenProps {
-  oIconPress?: () => void;
+  onIconPress?: () => void;
+  oNPressCallToAction: () => void;
   handleSubmitLogin: () => void;
   validateEmailField?: (value: string) => void;
+  hideActionText: boolean;
   control: Control<LoginFormSubmitType, any> | undefined;
   passwordIcon?: ReactNode;
-  icon?: ReactNode;
   hidePassword: boolean;
   isLoading: boolean;
 }
@@ -21,8 +23,10 @@ export const LoginScreen = ({
   hidePassword,
   isLoading,
   passwordIcon,
-  oIconPress,
+  hideActionText,
+  onIconPress,
   handleSubmitLogin,
+  oNPressCallToAction,
   validateEmailField,
 }: LoginScreenProps) => {
   return (
@@ -43,7 +47,7 @@ export const LoginScreen = ({
           control={control}
           name={"password"}
           hideInputValue={hidePassword}
-          onIconPress={oIconPress}
+          onIconPress={onIconPress}
           placeholder="Digite sua senha"
           icon={passwordIcon}
           isRequired
@@ -54,6 +58,16 @@ export const LoginScreen = ({
           isLoading={isLoading}
         />
       </S.Content>
+
+      {!hideActionText && (
+        <S.FooterContent>
+          <CallToActionText
+            description="Não possui conta?"
+            actionText="Cadastre-se"
+            onPressActionText={oNPressCallToAction}
+          />
+        </S.FooterContent>
+      )}
     </S.Container>
   );
 };

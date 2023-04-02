@@ -1,5 +1,4 @@
 import { Login } from "./views/Login";
-import { SignupScreen } from "./views/Register";
 import { Welcome } from "./views/Welcome";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { propsNavigationStack } from "../../routes/interfaces/propsNavigationStack";

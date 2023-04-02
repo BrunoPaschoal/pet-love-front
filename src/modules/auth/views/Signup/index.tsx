@@ -14,21 +14,26 @@ import {
 import { SignupResponseType } from "./interfaces/signupResponseType";
 import { getPasswordIcons } from "../../../../helpers/getPasswordIcons";
 import { SignupFormSubmitType } from "./interfaces/signupFormSubmitType";
+import useKeyboardChecker from "../../../../hooks/useKeyboardChecker";
 
 export const Signup = () => {
+  const navigation = useNavigation<propsStack>();
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [isPasswordHide, setPasswordHide] = useState(true);
+
+  const toast = useToast();
+  const api = useAxios();
+  const isKeyBoardOpen = useKeyboardChecker();
+
   const { handleSubmit, control } = useForm<SignupFormSubmitType>({
     mode: "onSubmit",
   });
-  const navigation = useNavigation<propsStack>();
-  const [isLoading, setIsLoading] = useState(false);
-  const [isPasswordHide, setPasswordHide] = useState(true);
-  const toast = useToast();
-  const api = useAxios();
 
   const handleSubmitSignup = async (values: SignupFormSubmitType) => {
     try {
       setIsLoading(true);
-      const { data } = await api.post<SignupResponseType>("/users", {
+      await api.post<SignupResponseType>("/users", {
         ...values,
       });
 
@@ -44,17 +49,23 @@ export const Signup = () => {
     setPasswordHide(!isPasswordHide);
   };
 
+  const oNPressCallToAction = () => {
+    navigation.navigate("Login");
+  };
+
   return (
     <SignupView
       handleSubmitSignup={handleSubmit(handleSubmitSignup)}
       validateEmailField={validateEmail}
       validatePasswordField={validatePassword}
       validateCellphoneField={validateCellphone}
+      passwordIcon={getPasswordIcons(isPasswordHide)}
+      hideActionText={isKeyBoardOpen}
+      oNPressCallToAction={oNPressCallToAction}
+      oIconPress={hideOrShowPassword}
       control={control}
       hidePassword={isPasswordHide}
       isLoading={isLoading}
-      oIconPress={hideOrShowPassword}
-      passwordIcon={getPasswordIcons(isPasswordHide)}
     />
   );
 };

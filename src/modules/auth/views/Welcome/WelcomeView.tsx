@@ -1,5 +1,5 @@
-import { TouchableOpacity } from "react-native";
 import { GenericButton } from "../../../../components/GenericButton";
+import { CallToActionText } from "../../components/CallToActionText";
 import * as S from "./style";
 
 interface WelcomeScreenProps {
@@ -29,10 +29,11 @@ export const WelcomeView = ({
         />
       </S.Content>
       <S.FooterContent>
-        <S.FooterText>Já tem uma conta?</S.FooterText>
-        <TouchableOpacity onPress={() => handlePressToLogin()}>
-          <S.LoginLinkText>Login</S.LoginLinkText>
-        </TouchableOpacity>
+        <CallToActionText
+          description="Já possui uma conta?"
+          actionText="Login"
+          onPressActionText={handlePressToLogin}
+        />
       </S.FooterContent>
     </S.Container>
   );

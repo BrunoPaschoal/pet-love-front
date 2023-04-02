@@ -19,10 +19,15 @@ export const Title = styled.Text`
 `;
 
 export const Content = styled.View`
-  ${({ theme: { colors, margins } }) => css`
-    flex: 1;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-  `}
+  flex: 1;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const FooterContent = styled.KeyboardAvoidingView`
+  position: absolute;
+  bottom: 0;
+  justify-content: center;
+  padding-bottom: 40px;
 `;

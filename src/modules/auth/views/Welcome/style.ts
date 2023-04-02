@@ -30,28 +30,8 @@ export const Content = styled.View`
 `;
 
 export const FooterContent = styled.View`
-  ${({ theme: { colors } }) => css`
-    flex-direction: row;
-    justify-content: center;
-    padding-bottom: 45px;
-  `}
-`;
-
-export const FooterText = styled.Text`
-  ${({ theme: { colors, fontSizes, fonts } }) => css`
-    font-size: ${fontSizes.heading_h4};
-    font-family: ${fonts.PoppinsMedium};
-    color: ${colors.tertiary};
-  `}
-`;
-
-export const LoginLinkText = styled.Text`
-  ${({ theme: { colors, fontSizes, fonts } }) => css`
-    font-size: ${fontSizes.heading_h4};
-    font-family: ${fonts.PoppinsBold};
-    margin-left: 3px;
-    color: ${colors.tertiary};
-  `}
+  justify-content: center;
+  padding-bottom: 45px;
 `;
 
 export const Description = styled.Text`

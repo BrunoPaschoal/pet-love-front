@@ -11,12 +11,14 @@ import { validateEmail } from "../../../../helpers/validadeHelper";
 import { LoginFormSubmitType } from "./interfaces/loginFormSubmitType";
 import { LoginResponseType } from "./interfaces/loginResponseType";
 import { AuthContext } from "../../../../context/AuthContext";
+import useKeyboardChecker from "../../../../hooks/useKeyboardChecker";
 
 export const Login = () => {
   const { login } = useContext(AuthContext);
 
   const api = useAxios();
   const toast = useToast();
+  const isKeyBoardOpen = useKeyboardChecker();
   const navigation = useNavigation<propsStack>();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -46,15 +48,21 @@ export const Login = () => {
     setPasswordHide(!isPasswordHide);
   };
 
+  const oNPressCallToAction = () => {
+    navigation.navigate("Signup");
+  };
+
   return (
     <LoginScreen
       handleSubmitLogin={handleSubmit(handleSubmitLogin)}
+      hideActionText={isKeyBoardOpen}
       control={control}
       hidePassword={isPasswordHide}
       validateEmailField={validateEmail}
       passwordIcon={getPasswordIcons(isPasswordHide)}
-      oIconPress={hideOrShowPassword}
+      onIconPress={hideOrShowPassword}
       isLoading={isLoading}
+      oNPressCallToAction={oNPressCallToAction}
     />
   );
 };
