@@ -12,6 +12,7 @@ export const Container = styled.View`
 `;
 
 export const FooterContent = styled.KeyboardAvoidingView`
+  margin-top: 30px;
   padding-bottom: 15px;
 `;
 

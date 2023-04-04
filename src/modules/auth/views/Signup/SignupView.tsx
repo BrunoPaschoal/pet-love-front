@@ -10,7 +10,7 @@ import { ScrollView } from "react-native-gesture-handler";
 interface SignupScreenProps {
   oIconPress?: () => void;
   handleSubmitSignup: () => void;
-  oNPressCallToAction: () => void;
+  onPressCallToAction: () => void;
   passwordIcon?: ReactNode;
   control: Control<SignupFormSubmitType, any> | undefined;
   hidePassword: boolean;
@@ -30,7 +30,7 @@ export const SignupView = ({
   oIconPress,
   handleSubmitSignup,
   validatePasswordField,
-  oNPressCallToAction,
+  onPressCallToAction,
   validateCellphoneField,
   validateEmailField,
 }: SignupScreenProps) => {
@@ -88,7 +88,7 @@ export const SignupView = ({
             <CallToActionText
               description="Já possui conta?"
               actionText="Faça login"
-              onPressActionText={oNPressCallToAction}
+              onPressActionText={onPressCallToAction}
             />
           </S.FooterContent>
         )}

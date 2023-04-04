@@ -49,7 +49,7 @@ export const Signup = () => {
     setPasswordHide(!isPasswordHide);
   };
 
-  const oNPressCallToAction = () => {
+  const onPressCallToAction = () => {
     navigation.navigate("Login");
   };
 
@@ -60,8 +60,8 @@ export const Signup = () => {
       validatePasswordField={validatePassword}
       validateCellphoneField={validateCellphone}
       passwordIcon={getPasswordIcons(isPasswordHide)}
-      hideActionText={isKeyBoardOpen}
-      oNPressCallToAction={oNPressCallToAction}
+      hideActionText={false}
+      onPressCallToAction={onPressCallToAction}
       oIconPress={hideOrShowPassword}
       control={control}
       hidePassword={isPasswordHide}

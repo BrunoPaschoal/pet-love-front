@@ -8,7 +8,7 @@ import { CallToActionText } from "../../components/CallToActionText";
 
 interface LoginScreenProps {
   onIconPress?: () => void;
-  oNPressCallToAction: () => void;
+  onPressCallToAction: () => void;
   handleSubmitLogin: () => void;
   validateEmailField?: (value: string) => void;
   hideActionText: boolean;
@@ -26,7 +26,7 @@ export const LoginScreen = ({
   hideActionText,
   onIconPress,
   handleSubmitLogin,
-  oNPressCallToAction,
+  onPressCallToAction,
   validateEmailField,
 }: LoginScreenProps) => {
   return (
@@ -64,7 +64,7 @@ export const LoginScreen = ({
           <CallToActionText
             description="Não possui conta?"
             actionText="Cadastre-se"
-            onPressActionText={oNPressCallToAction}
+            onPressActionText={onPressCallToAction}
           />
         </S.FooterContent>
       )}

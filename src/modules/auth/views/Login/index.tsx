@@ -48,7 +48,7 @@ export const Login = () => {
     setPasswordHide(!isPasswordHide);
   };
 
-  const oNPressCallToAction = () => {
+  const onPressCallToAction = () => {
     navigation.navigate("Signup");
   };
 
@@ -62,7 +62,7 @@ export const Login = () => {
       passwordIcon={getPasswordIcons(isPasswordHide)}
       onIconPress={hideOrShowPassword}
       isLoading={isLoading}
-      oNPressCallToAction={oNPressCallToAction}
+      onPressCallToAction={onPressCallToAction}
     />
   );
 };
