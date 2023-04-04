@@ -1,7 +1,6 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigation } from "@react-navigation/native";
-import { propsStack } from "../../../../routes/interfaces/propsNavigationStack";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { LoginScreen } from "./LoginView";
 import { useToast } from "react-native-toast-notifications";
 import useAxios from "../../../../hooks/useAxios";
@@ -12,21 +11,37 @@ import { LoginFormSubmitType } from "./interfaces/loginFormSubmitType";
 import { LoginResponseType } from "./interfaces/loginResponseType";
 import { AuthContext } from "../../../../context/AuthContext";
 import useKeyboardChecker from "../../../../hooks/useKeyboardChecker";
+import {
+  propsStack,
+  LoginScreenRouteProp,
+} from "../../../../routes/interfaces/propsNavigationStack";
 
 export const Login = () => {
   const { login } = useContext(AuthContext);
 
   const api = useAxios();
   const toast = useToast();
+  const route = useRoute<LoginScreenRouteProp>();
+
   const isKeyBoardOpen = useKeyboardChecker();
   const navigation = useNavigation<propsStack>();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordHide, setPasswordHide] = useState(true);
 
-  const { handleSubmit, control } = useForm<LoginFormSubmitType>({
+  const { handleSubmit, control, setValue } = useForm<LoginFormSubmitType>({
     mode: "onSubmit",
   });
+
+  const processRouteparams = useCallback(() => {
+    const LoginRouteParams = route.params;
+
+    if (LoginRouteParams) {
+      setValue("email", LoginRouteParams.email);
+      setValue("password", LoginRouteParams.password);
+    }
+    return;
+  }, [route.params, setValue]);
 
   const handleSubmitLogin = async (values: LoginFormSubmitType) => {
     try {
@@ -51,6 +66,10 @@ export const Login = () => {
   const onPressCallToAction = () => {
     navigation.navigate("Signup");
   };
+
+  useEffect(() => {
+    processRouteparams();
+  }, [processRouteparams]);
 
   return (
     <LoginScreen

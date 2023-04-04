@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { propsStack } from "../../../../routes/interfaces/propsNavigationStack";
 import { useNavigation } from "@react-navigation/native";
 import { useForm } from "react-hook-form";
@@ -6,15 +6,14 @@ import { SignupView } from "./SignupView";
 import { useToast } from "react-native-toast-notifications";
 import useAxios from "./../../../../hooks/useAxios";
 import { throwError } from "../../../../helpers/errorHandler";
+import { SignupResponseType } from "./interfaces/signupResponseType";
+import { getPasswordIcons } from "../../../../helpers/getPasswordIcons";
+import { SignupFormSubmitType } from "./interfaces/signupFormSubmitType";
 import {
   validateCellphone,
   validateEmail,
   validatePassword,
 } from "../../../../helpers/validadeHelper";
-import { SignupResponseType } from "./interfaces/signupResponseType";
-import { getPasswordIcons } from "../../../../helpers/getPasswordIcons";
-import { SignupFormSubmitType } from "./interfaces/signupFormSubmitType";
-import useKeyboardChecker from "../../../../hooks/useKeyboardChecker";
 
 export const Signup = () => {
   const navigation = useNavigation<propsStack>();
@@ -24,7 +23,6 @@ export const Signup = () => {
 
   const toast = useToast();
   const api = useAxios();
-  const isKeyBoardOpen = useKeyboardChecker();
 
   const { handleSubmit, control } = useForm<SignupFormSubmitType>({
     mode: "onSubmit",
@@ -37,7 +35,10 @@ export const Signup = () => {
         ...values,
       });
 
-      navigation.navigate("Login");
+      navigation.navigate("Login", {
+        email: values.email,
+        password: values.password,
+      });
     } catch (error) {
       throwError(error, toast);
     } finally {

@@ -1,7 +1,7 @@
 import * as S from "./style";
 import { GenericButton } from "./../../../../components/GenericButton";
 import { GenericTextInput } from "../../../../components/GenericTextInput";
-import { Control, FieldValues } from "react-hook-form";
+import { Control } from "react-hook-form";
 import { ReactNode } from "react";
 import { LoginFormSubmitType } from "./interfaces/loginFormSubmitType";
 import { CallToActionText } from "../../components/CallToActionText";
