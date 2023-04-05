@@ -71,9 +71,14 @@ export const Login = () => {
     processRouteparams();
   }, [processRouteparams]);
 
+  const showToast = () => {
+    toast.show("Toast", { duration: 9000000000 });
+  };
+
   return (
     <LoginScreen
-      handleSubmitLogin={handleSubmit(handleSubmitLogin)}
+      // handleSubmitLogin={handleSubmit(handleSubmitLogin)}
+      handleSubmitLogin={showToast}
       hideActionText={isKeyBoardOpen}
       control={control}
       hidePassword={isPasswordHide}
