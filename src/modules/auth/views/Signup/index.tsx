@@ -3,12 +3,12 @@ import { propsStack } from "../../../../routes/interfaces/propsNavigationStack";
 import { useNavigation } from "@react-navigation/native";
 import { useForm } from "react-hook-form";
 import { SignupView } from "./SignupView";
-import { useToast } from "react-native-toast-notifications";
 import useAxios from "./../../../../hooks/useAxios";
-import { throwError } from "../../../../helpers/errorHandler";
 import { SignupResponseType } from "./interfaces/signupResponseType";
 import { getPasswordIcons } from "../../../../helpers/getPasswordIcons";
 import { SignupFormSubmitType } from "./interfaces/signupFormSubmitType";
+import useCustomToast from "../../../../hooks/useCustomToast";
+import useErrorHandler from "../../../../hooks/useErrorHandler";
 import {
   validateCellphone,
   validateEmail,
@@ -21,7 +21,8 @@ export const Signup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordHide, setPasswordHide] = useState(true);
 
-  const toast = useToast();
+  const { throwError } = useErrorHandler();
+  const { showToast } = useCustomToast();
   const api = useAxios();
 
   const { handleSubmit, control } = useForm<SignupFormSubmitType>({
@@ -35,12 +36,18 @@ export const Signup = () => {
         ...values,
       });
 
+      showToast({
+        title: "Ebaa!",
+        type: "SUCCESS",
+        message: "Conta criada com sucesso! 🎉",
+      });
+
       navigation.navigate("Login", {
         email: values.email,
         password: values.password,
       });
     } catch (error) {
-      throwError(error, toast);
+      throwError(error);
     } finally {
       setIsLoading(false);
     }

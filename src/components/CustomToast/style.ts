@@ -17,9 +17,13 @@ export const Content = styled.View`
   padding: 15px;
 `;
 
-export const Badge = styled.View`
-  ${({ theme: { colors } }) => css`
-    background-color: ${colors.success};
+interface BadgeProps {
+  badgeColor: string;
+}
+
+export const Badge = styled.View<BadgeProps>`
+  ${({ badgeColor }) => css`
+    background-color: ${badgeColor};
     width: 13px;
   `}
 `;

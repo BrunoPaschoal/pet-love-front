@@ -20,11 +20,7 @@ export default function App() {
     <AuthProvider>
       <NavigationContainer>
         <ThemeProvider>
-          <ToastProvider
-            duration={5000}
-            renderToast={CustomToast}
-            offsetBottom={30}
-          >
+          <ToastProvider renderToast={CustomToast} offsetBottom={30}>
             <StatusBar style="dark" />
             <Main />
           </ToastProvider>

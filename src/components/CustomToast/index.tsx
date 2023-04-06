@@ -14,13 +14,13 @@ export const CustomToast = (toastProps: ToastProps) => {
         shadowRadius: 2,
       }}
     >
-      <S.Badge></S.Badge>
+      <S.Badge badgeColor={toastProps.data?.color}></S.Badge>
       <S.Content>
         <S.TitleContainer>
-          <Success width={15} height={21} />
-          <S.ToastTitle>Sucesso!</S.ToastTitle>
+          {toastProps.icon}
+          <S.ToastTitle>{toastProps.data?.title}</S.ToastTitle>
         </S.TitleContainer>
-        <S.ToastDescription>Operação realizada com sucesso!</S.ToastDescription>
+        <S.ToastDescription>{toastProps.message}</S.ToastDescription>
       </S.Content>
     </S.Container>
   );

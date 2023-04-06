@@ -2,9 +2,7 @@ import { useCallback, useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { LoginScreen } from "./LoginView";
-import { useToast } from "react-native-toast-notifications";
 import useAxios from "../../../../hooks/useAxios";
-import { throwError } from "../../../../helpers/errorHandler";
 import { getPasswordIcons } from "../../../../helpers/getPasswordIcons";
 import { validateEmail } from "../../../../helpers/validadeHelper";
 import { LoginFormSubmitType } from "./interfaces/loginFormSubmitType";
@@ -15,12 +13,14 @@ import {
   propsStack,
   LoginScreenRouteProp,
 } from "../../../../routes/interfaces/propsNavigationStack";
+import useErrorHandler from "../../../../hooks/useErrorHandler";
 
 export const Login = () => {
   const { login } = useContext(AuthContext);
 
+  const { throwError } = useErrorHandler();
+
   const api = useAxios();
-  const toast = useToast();
   const route = useRoute<LoginScreenRouteProp>();
 
   const isKeyBoardOpen = useKeyboardChecker();
@@ -53,7 +53,7 @@ export const Login = () => {
 
       login({ ...data });
     } catch (error) {
-      throwError(error, toast);
+      throwError(error);
     } finally {
       setIsLoading(false);
     }
@@ -71,14 +71,9 @@ export const Login = () => {
     processRouteparams();
   }, [processRouteparams]);
 
-  const showToast = () => {
-    toast.show("Toast", { duration: 9000000000 });
-  };
-
   return (
     <LoginScreen
-      // handleSubmitLogin={handleSubmit(handleSubmitLogin)}
-      handleSubmitLogin={showToast}
+      handleSubmitLogin={handleSubmit(handleSubmitLogin)}
       hideActionText={isKeyBoardOpen}
       control={control}
       hidePassword={isPasswordHide}
