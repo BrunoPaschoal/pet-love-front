@@ -1,5 +1,9 @@
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Home } from "../modules/home/views/home";
+import theme from "../themes";
+
 import HomeIcon from "../../assets/icons/home.svg";
 import HomeFilledIcon from "../../assets/icons/home-filled.svg";
 import AdoptIcon from "../../assets/icons/adopt.svg";
@@ -9,8 +13,6 @@ import OngsFilledIcon from "../../assets/icons/ongs-filled.svg";
 import FavoriteIcon from "../../assets/icons/favorite.svg";
 import FavoriteFilledIcon from "../../assets/icons/favorite-filled.svg";
 import MenuIcon from "../../assets/icons/menu.svg";
-import React from "react";
-import { Home } from "../modules/home/views/home";
 
 const AppStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -19,12 +21,15 @@ const HomeTabs = () => {
   const iconSize = 20;
   return (
     <Tab.Navigator
-      initialRouteName="Welcome"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
-        tabBarLabelStyle: { fontFamily: "Poppins-SemiBold", fontSize: 11 },
-        tabBarInactiveTintColor: "#a8a8a8",
-        tabBarActiveTintColor: "#FFAD60",
+        tabBarInactiveTintColor: theme["defaultAppTheme"].colors.gray_03,
+        tabBarActiveTintColor: theme["defaultAppTheme"].colors.secondary,
+        tabBarLabelStyle: {
+          fontFamily: theme["defaultAppTheme"].fonts.PoppinsSemiBold,
+          fontSize: 11,
+        },
         tabBarStyle: {
           height: 60,
           paddingBottom: 5,
@@ -113,7 +118,7 @@ const HomeTabs = () => {
 export const PrivateRoutes = () => {
   return (
     <AppStack.Navigator
-      initialRouteName="Welcome"
+      initialRouteName="HomeTabs"
       screenOptions={{ headerShown: false }}
     >
       <AppStack.Screen name="HomeTabs" component={HomeTabs} />
