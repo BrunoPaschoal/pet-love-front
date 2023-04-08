@@ -23,5 +23,6 @@ export const Main = () => {
     SplashScreen.hideAsync();
   }
 
-  return signed ? <PrivateRoutes /> : <PublicRoutes />;
+  // return signed ? <PrivateRoutes /> : <PublicRoutes />;
+  return <PrivateRoutes />;
 };
