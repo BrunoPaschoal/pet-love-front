@@ -1,10 +1,10 @@
 import { Login } from "./views/Login";
 import { Welcome } from "./views/Welcome";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { propsNavigationStack } from "../../routes/interfaces/propsNavigationStack";
+import { propsNavigationAuthStack } from "../../routes/interfaces/propsNavigationAuthStack";
 import { Signup } from "./views/Signup";
 
-const AuthStack = createNativeStackNavigator<propsNavigationStack>();
+const AuthStack = createNativeStackNavigator<propsNavigationAuthStack>();
 
 export const Auth = () => {
   return (

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { propsStack } from "../../../../routes/interfaces/propsNavigationStack";
+import { propsAuthStack } from "../../../../routes/interfaces/propsNavigationAuthStack";
 import { useNavigation } from "@react-navigation/native";
 import { useForm } from "react-hook-form";
 import { SignupView } from "./SignupView";
@@ -16,7 +16,7 @@ import {
 } from "../../../../helpers/validadeHelper";
 
 export const Signup = () => {
-  const navigation = useNavigation<propsStack>();
+  const navigation = useNavigation<propsAuthStack>();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordHide, setPasswordHide] = useState(true);

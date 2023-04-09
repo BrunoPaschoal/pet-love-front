@@ -1,9 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
-import { propsStack } from "../../../../routes/interfaces/propsNavigationStack";
+import { propsAuthStack } from "../../../../routes/interfaces/propsNavigationAuthStack";
 import { WelcomeView } from "./WelcomeView";
 
 export const Welcome = () => {
-  const navigation = useNavigation<propsStack>();
+  const navigation = useNavigation<propsAuthStack>();
 
   const handlePressToLogin = () => {
     navigation.navigate("Login");

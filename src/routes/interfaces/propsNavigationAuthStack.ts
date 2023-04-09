@@ -1,7 +1,7 @@
 import { RouteProp } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
-export type propsNavigationStack = {
+export type propsNavigationAuthStack = {
   Login: LoginRouteParams | undefined;
   Signup: undefined;
   Welcome: undefined;
@@ -12,6 +12,7 @@ export type LoginRouteParams = {
   password: string;
 };
 
-export type propsStack = NativeStackNavigationProp<propsNavigationStack>;
+export type propsAuthStack =
+  NativeStackNavigationProp<propsNavigationAuthStack>;
 
-export type LoginScreenRouteProp = RouteProp<propsNavigationStack, "Login">;
+export type LoginScreenRouteProp = RouteProp<propsNavigationAuthStack, "Login">;

@@ -9,11 +9,11 @@ import { LoginFormSubmitType } from "./interfaces/loginFormSubmitType";
 import { LoginResponseType } from "./interfaces/loginResponseType";
 import { AuthContext } from "../../../../context/AuthContext";
 import useKeyboardChecker from "../../../../hooks/useKeyboardChecker";
-import {
-  propsStack,
-  LoginScreenRouteProp,
-} from "../../../../routes/interfaces/propsNavigationStack";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
+import {
+  LoginScreenRouteProp,
+  propsAuthStack,
+} from "../../../../routes/interfaces/propsNavigationAuthStack";
 
 export const Login = () => {
   const { login } = useContext(AuthContext);
@@ -24,7 +24,7 @@ export const Login = () => {
   const route = useRoute<LoginScreenRouteProp>();
 
   const isKeyBoardOpen = useKeyboardChecker();
-  const navigation = useNavigation<propsStack>();
+  const navigation = useNavigation<propsAuthStack>();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordHide, setPasswordHide] = useState(true);
