@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components/native";
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   ${({ theme: { colors } }) => css`
     flex: 1;
     padding-top: 85px;
