@@ -1,6 +1,5 @@
 import * as S from "./style";
 import { ToastProps } from "react-native-toast-notifications/lib/typescript/toast";
-import Success from "../../../assets/icons/success.svg";
 
 export const CustomToast = (toastProps: ToastProps) => {
   return (

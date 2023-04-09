@@ -17,7 +17,7 @@ import MenuIcon from "../../assets/icons/menu.svg";
 const AppStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const HomeTabs = () => {
+const AppTabs = () => {
   const iconSize = 20;
   return (
     <Tab.Navigator
@@ -118,10 +118,10 @@ const HomeTabs = () => {
 export const PrivateRoutes = () => {
   return (
     <AppStack.Navigator
-      initialRouteName="HomeTabs"
+      initialRouteName="AppTabs"
       screenOptions={{ headerShown: false }}
     >
-      <AppStack.Screen name="HomeTabs" component={HomeTabs} />
+      <AppStack.Screen name="AppTabs" component={AppTabs} />
     </AppStack.Navigator>
   );
 };
