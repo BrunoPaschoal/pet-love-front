@@ -1,10 +1,13 @@
-import { ShortcutItem, ShortcutItemProps } from "../ShortcutItem";
-import AdoptFilledIcon from "../../../assets/icons/adopt-filled.svg";
-import OngsFilledIcon from "../../../assets/icons/ongs-filled.svg";
-import HeartplusFilledIcon from "../../../assets/icons/heartplus-filled.svg";
-import BookIcon from "../../../assets/icons/book.svg";
-import theme from "../../themes";
+import AdoptFilledIcon from "../../../../../assets/icons/adopt-filled.svg";
+import OngsFilledIcon from "../../../../../assets/icons/ongs-filled.svg";
+import HeartplusFilledIcon from "../../../../../assets/icons/heartplus-filled.svg";
+import BookIcon from "../../../../../assets/icons/book.svg";
+import theme from "../../../../themes";
 import * as S from "./style";
+import {
+  ShortcutItem,
+  ShortcutItemProps,
+} from "../../../../components/ShortcutItem";
 
 export const ShortcutList = ({}) => {
   const iconSize = 30;
@@ -16,14 +19,14 @@ export const ShortcutList = ({}) => {
         <AdoptFilledIcon width={iconSize} height={iconSize} fill={iconColor} />
       ),
       title: "Adote",
-      redirectTo: "AppTabs",
+      navigateTo: "AppTabs",
     },
     {
       icon: (
         <OngsFilledIcon width={iconSize} height={iconSize} fill={iconColor} />
       ),
       title: "Ajude uma ONG",
-      redirectTo: "AppTabs",
+      navigateTo: "AppTabs",
     },
     {
       icon: (
@@ -34,12 +37,12 @@ export const ShortcutList = ({}) => {
         />
       ),
       title: "Doar um bichinho",
-      redirectTo: "AppTabs",
+      navigateTo: "AppTabs",
     },
     {
       icon: <BookIcon width={iconSize} height={iconSize} fill={iconColor} />,
       title: "Cuide bem do seu pet",
-      redirectTo: "AppTabs",
+      navigateTo: "AppTabs",
     },
   ];
 
@@ -50,7 +53,7 @@ export const ShortcutList = ({}) => {
           <ShortcutItem
             icon={info.icon}
             title={info.title}
-            redirectTo={info.redirectTo}
+            navigateTo={info.navigateTo}
             key={i}
           />
         ))}

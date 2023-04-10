@@ -4,16 +4,19 @@ import { ReactNode } from "react";
 export interface ShortcutItemProps {
   title: string;
   icon: ReactNode;
-  redirectTo?: string;
+  navigateTo?: string;
 }
 
 export const ShortcutItem = ({
   icon,
   title,
-  redirectTo,
+  navigateTo,
 }: ShortcutItemProps) => {
+  const navigateToScreen = () => {
+    // Implement navigation
+  };
   return (
-    <S.Container>
+    <S.Container onPress={navigateToScreen}>
       <S.IconContainer>{icon}</S.IconContainer>
       <S.TitleContainer>
         <S.Title>{title}</S.Title>

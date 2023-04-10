@@ -1,6 +1,6 @@
 import { ProfileHeader } from "../../../../components/ProfileHeader";
-import { ShortcutList } from "../../../../components/ShortcutList";
 import { getFirstName } from "../../../../helpers/getFirstName";
+import { ShortcutList } from "../../components/ShortcutList";
 import * as S from "./style";
 
 export const HomeView = () => {
