@@ -20,7 +20,9 @@ export const BlogPostCard = ({
       />
       <S.TextContainer>
         <S.Title>{title}</S.Title>
-        <S.Description>{description}</S.Description>
+        <S.Description numberOfLines={3} ellipsizeMode="tail">
+          {description}
+        </S.Description>
       </S.TextContainer>
     </S.Container>
   );
