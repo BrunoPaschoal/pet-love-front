@@ -1,5 +1,6 @@
 import { ProfileHeader } from "../../../../components/ProfileHeader";
 import { getFirstName } from "../../../../helpers/getFirstName";
+import { CareSection } from "../../components/CareSection";
 import { ShortcutList } from "../../components/ShortcutList";
 import * as S from "./style";
 
@@ -16,6 +17,7 @@ export const HomeView = () => {
         />
       </S.HeaderContainer>
       <ShortcutList />
+      <CareSection />
     </S.Container>
   );
 };
