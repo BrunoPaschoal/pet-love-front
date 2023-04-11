@@ -3,8 +3,9 @@ import styled, { css } from "styled-components/native";
 export const Container = styled.TouchableOpacity`
   ${({ theme: { colors } }) => css`
     background-color: ${colors.gray_02};
-    height: 140px;
-    border-radius: 15px;
-    margin-bottom: 10px;
+    height: 170px;
+    width: 140px;
+    margin-right: 10px;
+    border-radius: 30px;
   `}
 `;

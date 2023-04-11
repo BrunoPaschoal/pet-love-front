@@ -5,6 +5,8 @@ export const Container = styled.ScrollView`
 `;
 
 export const ShortcutListContainer = styled.View`
-  flex-direction: row;
-  padding-left: 25px;
+  ${({ theme: { margins } }) => css`
+    flex-direction: row;
+    padding-left: ${margins.screenSideMargin};
+  `}
 `;
