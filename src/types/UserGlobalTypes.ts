@@ -6,3 +6,8 @@ export type RoleType = {
 export enum UserRole {
   USER = "USER",
 }
+
+export enum PetSexType {
+  MALE = "MALE",
+  FEMALE = "FEMALE",
+}
