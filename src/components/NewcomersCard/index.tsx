@@ -1,11 +1,8 @@
 import * as S from "./style";
-import HeartIcon from "../../../assets/icons/favorite-white-stroke.svg";
-import HeartFilledIcon from "../../../assets/icons/favorite-heart.svg";
-import theme from "../../themes";
 
 import { PetSexIndicator } from "../PetSexIndicator";
 import { PetSexType } from "../../types/UserGlobalTypes";
-import { useState } from "react";
+import { FavoriteButton } from "../FavoriteButton";
 
 interface NewcomersCardProps {
   petName: string;
@@ -22,15 +19,6 @@ export const NewcomersCard = ({
   petName,
   sex,
 }: NewcomersCardProps) => {
-  const [favorite, setFavorite] = useState(isFavorite);
-
-  const iconHeartColor = theme["defaultAppTheme"].colors.primary;
-  const iconSize = 20;
-
-  const onPresFavoriteIcon = () => {
-    setFavorite(!favorite);
-  };
-
   return (
     <S.Container>
       <S.ImageView source={{ uri: imageUri }}>
@@ -41,15 +29,8 @@ export const NewcomersCard = ({
               <S.PetCity>{petCity}</S.PetCity>
               <PetSexIndicator sex={sex} />
             </S.TextContainer>
-            <S.IconContainer onPress={onPresFavoriteIcon}>
-              {favorite && (
-                <HeartFilledIcon
-                  width={iconSize}
-                  height={iconSize}
-                  fill={iconHeartColor}
-                />
-              )}
-              {!favorite && <HeartIcon width={iconSize} height={iconSize} />}
+            <S.IconContainer>
+              <FavoriteButton isFavorite={isFavorite} />
             </S.IconContainer>
           </S.Content>
         </S.Overlay>

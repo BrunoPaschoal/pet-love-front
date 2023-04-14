@@ -54,6 +54,6 @@ export const PetCity = styled.Text`
   `}
 `;
 
-export const IconContainer = styled.TouchableOpacity`
+export const IconContainer = styled.View`
   padding-bottom: 5px;
 `;
