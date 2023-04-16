@@ -5,16 +5,19 @@ import { NewcomersSection } from "../../components/NewcomersSection";
 import { ShortcutList } from "../../components/ShortcutList";
 import * as S from "./style";
 
-export const HomeView = () => {
+interface HomeViewProps {
+  userAvatar: string | undefined;
+  userName: string | undefined;
+}
+
+export const HomeView = ({ userAvatar, userName }: HomeViewProps) => {
   return (
     <S.Container>
       <S.HeaderContainer>
         <ProfileHeader
-          title={`Olá, ${getFirstName("Bruno Rocha")}`}
+          title={`Olá, ${getFirstName(userName)}`}
           description={"Seja bem-vindo(a)"}
-          avatarUri={
-            "https://hips.hearstapps.com/hmg-prod/images/pet-adoption-tips-64188c226e7fe.jpg"
-          }
+          avatarUri={userAvatar}
         />
       </S.HeaderContainer>
       <ShortcutList />

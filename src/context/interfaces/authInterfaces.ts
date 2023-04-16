@@ -3,14 +3,14 @@ export interface User {
   email: string;
   id: number;
   token: string;
-  avatar: string | null;
+  avatar: string;
 }
 
 export interface LoginArgs {
   name: string;
   id: number;
   email: string;
-  avatar: string | null;
+  avatar: string;
   token: string;
 }
 

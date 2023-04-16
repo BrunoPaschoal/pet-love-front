@@ -3,7 +3,7 @@ import * as S from "./style";
 interface ProfileHeaderProps {
   title: string;
   description: string;
-  avatarUri: string;
+  avatarUri: string | undefined;
 }
 
 export const ProfileHeader = ({
