@@ -46,6 +46,8 @@ export const Home = () => {
       userName={user?.name}
       pets={petDonations?.pets}
       isPetsLoading={petDonationsLoading}
+      axiosInstance={api}
+      showToast={showToast}
     />
   );
 };

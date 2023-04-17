@@ -1,5 +1,7 @@
+import { AxiosInstance } from "axios";
 import { ProfileHeader } from "../../../../components/ProfileHeader";
 import { getFirstName } from "../../../../helpers/getFirstName";
+import { ShowToastArgs } from "../../../../types/CustomToasttypes";
 import { CareSection } from "../../components/CareSection";
 import { NewcomersSection } from "../../components/NewcomersSection";
 import { ShortcutList } from "../../components/ShortcutList";
@@ -11,11 +13,15 @@ interface HomeViewProps {
   userName: string | undefined;
   pets: PetResponseType[] | undefined;
   isPetsLoading: boolean;
+  axiosInstance: AxiosInstance;
+  showToast: (args: ShowToastArgs) => void;
 }
 
 export const HomeView = ({
+  showToast,
   userAvatar,
   userName,
+  axiosInstance,
   isPetsLoading,
   pets,
 }: HomeViewProps) => {
@@ -29,7 +35,12 @@ export const HomeView = ({
         />
       </S.HeaderContainer>
       <ShortcutList />
-      <NewcomersSection pets={pets} isPetsLoading={isPetsLoading} />
+      <NewcomersSection
+        pets={pets}
+        isPetsLoading={isPetsLoading}
+        axiosInstance={axiosInstance}
+        showToast={showToast}
+      />
       <CareSection />
     </S.Container>
   );

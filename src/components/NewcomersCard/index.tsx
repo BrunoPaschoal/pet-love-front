@@ -3,6 +3,8 @@ import * as S from "./style";
 import { PetSexIndicator } from "../PetSexIndicator";
 import { PetSexType } from "../../types/UserGlobalTypes";
 import { FavoriteButton } from "../FavoriteButton";
+import { AxiosInstance } from "axios";
+import { ShowToastArgs } from "../../types/CustomToasttypes";
 
 interface NewcomersCardProps {
   petName: string;
@@ -11,12 +13,18 @@ interface NewcomersCardProps {
   sex: PetSexType;
   imageUri: string;
   isFavorite: boolean;
+  axiosInstance: AxiosInstance;
+  showToast: (args: ShowToastArgs) => void;
+  petId: number;
 }
 
 export const NewcomersCard = ({
+  showToast,
   isFavorite = false,
   imageUri,
+  axiosInstance,
   petCity,
+  petId,
   petState,
   petName,
   sex,
@@ -32,7 +40,12 @@ export const NewcomersCard = ({
               <PetSexIndicator sex={sex} />
             </S.TextContainer>
             <S.IconContainer>
-              <FavoriteButton isFavorite={isFavorite} />
+              <FavoriteButton
+                isFavorite={isFavorite}
+                axiosInstance={axiosInstance}
+                petId={petId}
+                showToast={showToast}
+              />
             </S.IconContainer>
           </S.Content>
         </S.Overlay>
