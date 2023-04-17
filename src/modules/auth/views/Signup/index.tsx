@@ -14,6 +14,7 @@ import {
   validateEmail,
   validatePassword,
 } from "../../../../helpers/validadeHelper";
+import { formatName } from "../../../../helpers/formatName";
 
 export const Signup = () => {
   const navigation = useNavigation<propsAuthStack>();
@@ -30,6 +31,8 @@ export const Signup = () => {
   });
 
   const handleSubmitSignup = async (values: SignupFormSubmitType) => {
+    values.name = formatName(values.name);
+
     try {
       setIsLoading(true);
       await api.post<SignupResponseType>("/users", {

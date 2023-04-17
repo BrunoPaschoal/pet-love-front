@@ -1,14 +1,14 @@
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../../../context/AuthContext";
 import useAxios from "../../../../hooks/useAxios";
-import useErrorHandler from "../../../../hooks/useErrorHandler";
+import useCustomToast from "../../../../hooks/useCustomToast";
 import { HomeView } from "./HomeView";
 import { MostRecentsPetDonationsResponseType } from "./interfaces/HomeInterfaces";
 
 export const Home = () => {
   const { user } = useContext(AuthContext);
   const api = useAxios();
-  const { throwError } = useErrorHandler();
+  const { showToast } = useCustomToast();
 
   const [petDonations, setPetDonations] =
     useState<MostRecentsPetDonationsResponseType>();
@@ -25,7 +25,12 @@ export const Home = () => {
       );
       setPetDonations(petsResponse.data);
     } catch (error) {
-      throwError(error);
+      showToast({
+        title: "Opps!",
+        message:
+          "Ocorreu um erro inesperado ao buscar os bichinhos mais recentes, por favor tente mais tarde! 😯",
+        type: "ERROR",
+      });
     } finally {
       setPetDonationsLoading(false);
     }
