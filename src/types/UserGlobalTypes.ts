@@ -11,3 +11,8 @@ export enum PetSexType {
   MALE = "MALE",
   FEMALE = "FEMALE",
 }
+
+export enum PetAgeType {
+  YEARS = "YEARS",
+  MONTHS = "MONTHS",
+}

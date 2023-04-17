@@ -7,6 +7,7 @@ import { FavoriteButton } from "../FavoriteButton";
 interface NewcomersCardProps {
   petName: string;
   petCity: string;
+  petState: string;
   sex: PetSexType;
   imageUri: string;
   isFavorite: boolean;
@@ -16,6 +17,7 @@ export const NewcomersCard = ({
   isFavorite = false,
   imageUri,
   petCity,
+  petState,
   petName,
   sex,
 }: NewcomersCardProps) => {
@@ -26,7 +28,7 @@ export const NewcomersCard = ({
           <S.Content>
             <S.TextContainer>
               <S.PetName>{petName}</S.PetName>
-              <S.PetCity>{petCity}</S.PetCity>
+              <S.PetCity>{`${petCity}-${petState}`}</S.PetCity>
               <PetSexIndicator sex={sex} />
             </S.TextContainer>
             <S.IconContainer>
