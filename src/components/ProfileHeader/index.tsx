@@ -14,7 +14,11 @@ export const ProfileHeader = ({
   return (
     <S.Container>
       <S.AvatarContainer>
-        <S.AvatarImage source={{ uri: avatarUri }} />
+        {avatarUri && <S.AvatarImage source={{ uri: avatarUri }} />}
+
+        {!avatarUri && (
+          <S.AvatarImage source={require("../../../assets/pets-avatar.png")} />
+        )}
       </S.AvatarContainer>
       <S.Content>
         <S.Title>{title}</S.Title>
