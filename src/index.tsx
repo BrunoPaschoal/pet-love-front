@@ -24,5 +24,4 @@ export const Main = () => {
   }
 
   return signed ? <PrivateRoutes /> : <PublicRoutes />;
-  //return <PrivateRoutes />;
 };

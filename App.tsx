@@ -21,7 +21,7 @@ export default function App() {
       <NavigationContainer>
         <ThemeProvider>
           <ToastProvider renderToast={CustomToast} offsetBottom={30}>
-            <StatusBar style="dark" />
+            <StatusBar style="dark" backgroundColor="white" />
             <Main />
           </ToastProvider>
         </ThemeProvider>
