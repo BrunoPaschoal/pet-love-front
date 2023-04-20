@@ -1,9 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { LoginArgs, User, AuthContextType } from "./interfaces/authInterfaces";
 
 export const AuthContext = createContext<AuthContextType>({
   user: undefined,
-  login: ({ email, avatar, id, name, token }: LoginArgs) => {},
+  login: (args: LoginArgs) => {},
   logout: () => {},
   signed: false,
   loading: true,
@@ -14,7 +15,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState<boolean>(true);
 
   async function loadStorage() {
-    // Lógica para buscar no storage e salvar no estado caso tenha usuário
+    const userData = await AsyncStorage.getItem("user");
+    if (userData) {
+      const user: User = JSON.parse(userData);
+      setUser(user);
+    }
     setLoading(false);
     return null;
   }
@@ -23,19 +28,20 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     loadStorage();
   }, []);
 
-  const login = async ({ id, email, name, avatar, token }: LoginArgs) => {
+  const login = async (user: LoginArgs) => {
     setUser({
-      id: id,
-      name: name,
-      email: email,
-      avatar: avatar,
-      token: token,
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      avatar: user.avatar,
+      token: user.token,
     });
+    await AsyncStorage.setItem("user", JSON.stringify(user));
   };
 
   const logout = async () => {
+    await AsyncStorage.removeItem("user");
     setUser(undefined);
-    // Criar funcão para limpar assync storage aqui
   };
 
   return (
