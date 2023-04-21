@@ -1,4 +1,5 @@
 import * as S from "./style";
+import theme from "../../themes";
 
 import { PetSexIndicator } from "../PetSexIndicator";
 import { PetSexType } from "../../types/UserGlobalTypes";
@@ -37,14 +38,22 @@ export const NewcomersCard = ({
             <S.TextContainer>
               <S.PetName>{petName}</S.PetName>
               <S.PetCity>{`${petCity}-${petState}`}</S.PetCity>
-              <PetSexIndicator sex={sex} />
+              <PetSexIndicator
+                sex={sex}
+                iconColor={theme["defaultAppTheme"].colors.white}
+                textColor={theme["defaultAppTheme"].colors.white}
+                fontSize={theme["defaultAppTheme"].fontSizes.p3}
+                iconSize={12}
+              />
             </S.TextContainer>
             <S.IconContainer>
               <FavoriteButton
                 isFavorite={isFavorite}
                 axiosInstance={axiosInstance}
+                unfavoritedIconStroke={"white"}
                 petId={petId}
                 showToast={showToast}
+                activitIndicatorColor={"white"}
               />
             </S.IconContainer>
           </S.Content>

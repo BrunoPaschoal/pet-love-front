@@ -1,5 +1,6 @@
 import { ActivityIndicator } from "react-native";
-import HeartIcon from "../../../assets/icons/favorite-white-stroke.svg";
+import UnfavoriteIconWhite from "../../../assets/icons/favorite-white-stroke.svg";
+import UnfavoriteIconGray from "../../../assets/icons/favorite-gray-stroke.svg";
 import HeartFilledIcon from "../../../assets/icons/favorite-heart.svg";
 import * as S from "./style";
 import theme from "../../themes/index";
@@ -12,19 +13,32 @@ interface FavoriteButtonProps {
   isFavorite: boolean;
   axiosInstance: AxiosInstance;
   petId: number;
+  heartSize?: number;
+  activitIndicatorColor: "white" | "primary";
+  unfavoritedIconStroke: "white" | "gray";
 }
 
 export const FavoriteButton = ({
   showToast,
   isFavorite,
   axiosInstance,
+  activitIndicatorColor,
+  unfavoritedIconStroke,
+  heartSize,
   petId,
 }: FavoriteButtonProps) => {
   const [favorite, setFavorite] = useState(isFavorite);
   const [loading, setLoading] = useState(false);
 
   const iconHeartColor = theme["defaultAppTheme"].colors.primary;
-  const iconSize = 20;
+  const iconSize = heartSize ? heartSize : 20;
+
+  const getUnfavoriteIcon = () => {
+    if (unfavoritedIconStroke === "white")
+      return <UnfavoriteIconWhite width={iconSize} height={iconSize} />;
+    if (unfavoritedIconStroke === "gray")
+      return <UnfavoriteIconGray width={iconSize} height={iconSize} />;
+  };
 
   const onPresFavoriteIcon = async () => {
     setLoading(true);
@@ -45,8 +59,7 @@ export const FavoriteButton = ({
     } catch {
       showToast({
         title: "Opps!",
-        message:
-          "Ocorreu um erro inesperado ao buscar os bichinhos mais recentes, por favor tente mais tarde! 😯",
+        message: "Ocorreu um erro inesperado, por favor tente mais tarde! 😯",
         type: "ERROR",
       });
     } finally {
@@ -65,14 +78,14 @@ export const FavoriteButton = ({
               fill={iconHeartColor}
             />
           )}
-          {!favorite && <HeartIcon width={iconSize} height={iconSize} />}
+          {!favorite && getUnfavoriteIcon()}
         </>
       )}
 
       {loading && (
         <ActivityIndicator
           size="small"
-          color={theme["defaultAppTheme"].colors.white}
+          color={theme["defaultAppTheme"].colors[activitIndicatorColor]}
         />
       )}
     </S.Container>

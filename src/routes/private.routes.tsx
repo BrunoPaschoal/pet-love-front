@@ -13,6 +13,7 @@ import OngsFilledIcon from "../../assets/icons/ongs-filled.svg";
 import FavoriteIcon from "../../assets/icons/favorite.svg";
 import FavoriteFilledIcon from "../../assets/icons/favorite-filled.svg";
 import MenuIcon from "../../assets/icons/menu.svg";
+import { Favorites } from "../modules/main/views/favorites";
 
 const AppStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -85,7 +86,7 @@ const AppTabs = () => {
 
       <Tab.Screen
         name="Favorites"
-        component={Home}
+        component={Favorites}
         options={{
           title: "Favoritos",
           tabBarIcon: ({ focused, color }) =>

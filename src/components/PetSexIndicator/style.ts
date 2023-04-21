@@ -5,11 +5,16 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const SexName = styled.Text`
-  ${({ theme: { colors, fontSizes, fonts } }) => css`
+interface SexNameProps {
+  textColor: string;
+  fontSize: string;
+}
+
+export const SexName = styled.Text<SexNameProps>`
+  ${({ theme: { fonts }, textColor, fontSize }) => css`
     font-family: ${fonts.PoppinsMedium};
-    font-size: ${fontSizes.p3};
-    color: ${colors.white};
+    font-size: ${fontSize};
+    color: ${textColor};
     margin-left: 3px;
     transform: translateY(3px);
   `}
