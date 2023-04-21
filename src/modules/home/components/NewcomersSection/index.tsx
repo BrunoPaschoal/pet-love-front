@@ -3,6 +3,7 @@ import { NewcomersCard } from "../../../../components/NewcomersCard";
 import { PetResponseType } from "../../views/home/interfaces/HomeInterfaces";
 import { AxiosInstance } from "axios";
 import { ShowToastArgs } from "../../../../types/CustomToasttypes";
+import { NewcomersSkeleton } from "../../../../components/Skeletons/NewcomersSkeleton";
 
 interface NewcomersSectionProps {
   pets: PetResponseType[] | undefined;
@@ -39,6 +40,7 @@ export const NewcomersSection = ({
                 key={pet.id}
               />
             ))}
+          {isPetsLoading && <NewcomersSkeleton numberOfCards={3} />}
         </S.CardsContainer>
       </S.CardsScrollView>
     </S.Container>
