@@ -1,5 +1,5 @@
 import { useFonts } from "expo-font";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { PublicRoutes } from "./routes/public.routes";
 import * as SplashScreen from "expo-splash-screen";

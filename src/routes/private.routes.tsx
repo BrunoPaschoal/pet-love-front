@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Home } from "../modules/home/views/home";
+import { Home } from "../modules/main/views/home";
 import theme from "../themes";
 
 import HomeIcon from "../../assets/icons/home.svg";
