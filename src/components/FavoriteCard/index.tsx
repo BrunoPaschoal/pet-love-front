@@ -9,11 +9,23 @@ import * as S from "./style";
 interface FavoritesCardProps {
   axiosInstance: AxiosInstance;
   showToast: (args: ShowToastArgs) => void;
+  isFavoite: boolean;
+  petName: string;
+  petAge: string;
+  petId: number;
+  sex: PetSexType;
+  distance?: string;
 }
 
 export const FavoritesCard = ({
   axiosInstance,
   showToast,
+  petName,
+  petAge,
+  isFavoite,
+  sex,
+  petId,
+  distance,
 }: FavoritesCardProps) => {
   return (
     <S.Container style={{ elevation: 8, shadowColor: "#7c7c7c" }}>
@@ -23,10 +35,10 @@ export const FavoritesCard = ({
         }}
       />
       <S.TextContentContainer>
-        <S.PetName>Mimo</S.PetName>
-        <S.PetAge>4 Meses</S.PetAge>
+        <S.PetName>{petName}</S.PetName>
+        <S.PetAge>{petAge} Meses</S.PetAge>
         <PetSexIndicator
-          sex={PetSexType.MALE}
+          sex={sex}
           iconColor={theme["defaultAppTheme"].colors.gray_03}
           textColor={theme["defaultAppTheme"].colors.gray_03}
           fontSize={theme["defaultAppTheme"].fontSizes.p4}
@@ -38,8 +50,8 @@ export const FavoritesCard = ({
         axiosInstance={axiosInstance}
         activitIndicatorColor={"primary"}
         unfavoritedIconStroke={"gray"}
-        isFavorite={true}
-        petId={1}
+        isFavorite={isFavoite}
+        petId={petId}
         showToast={showToast}
         heartSize={25}
       />
