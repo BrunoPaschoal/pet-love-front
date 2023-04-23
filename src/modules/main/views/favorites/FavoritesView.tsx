@@ -30,6 +30,7 @@ export const FavoritesView = ({
         showToast={showToast}
         favorites={favorites}
         unfavoritePet={unfavoritePet}
+        isFavoriteLoading={favoritesLoading}
       />
     </S.Container>
   );
