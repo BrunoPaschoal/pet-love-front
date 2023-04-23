@@ -1,5 +1,7 @@
-import { useContext, useState, useEffect } from "react";
+import { useFocusEffect } from "@react-navigation/native";
+import { useContext, useState, useCallback } from "react";
 import { AuthContext } from "../../../../context/AuthContext";
+import { fakePromisse } from "../../../../helpers/fakePromisseHelper";
 import useAxios from "../../../../hooks/useAxios";
 import useCustomToast from "../../../../hooks/useCustomToast";
 import { HomeView } from "./HomeView";
@@ -36,9 +38,32 @@ export const Home = () => {
     }
   };
 
-  useEffect(() => {
-    getMostRecentsPetDonations();
-  }, []);
+  const favoriteOrUnfavoritePet = async (petId: number, index: number) => {
+    if (petDonations?.pets) {
+      const donationsForUpdate = petDonations;
+
+      const currentFavoriteStatus = petDonations.pets[index].isFavorite;
+      const pet = petDonations.pets[index];
+
+      if (!currentFavoriteStatus) {
+        await api.post(`favorite/${petId}`);
+      }
+
+      if (currentFavoriteStatus) {
+        await api.delete(`favorite/${petId}`);
+      }
+      // Atualiza os dados da lista de pets marcando como favorito para que não seja necessário fazer uma nova requisição
+      pet.isFavorite = !currentFavoriteStatus;
+      donationsForUpdate.pets[index] = pet;
+      setPetDonations({ ...donationsForUpdate });
+    }
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      getMostRecentsPetDonations();
+    }, [])
+  );
 
   return (
     <HomeView
@@ -46,8 +71,8 @@ export const Home = () => {
       userName={user?.name}
       pets={petDonations?.pets}
       isPetsLoading={petDonationsLoading}
-      axiosInstance={api}
       showToast={showToast}
+      favoriteOrUnfavoritePet={favoriteOrUnfavoritePet}
     />
   );
 };

@@ -1,48 +1,36 @@
-import { AxiosInstance } from "axios";
 import { FavoritesCard } from "../../../../components/FavoriteCard";
 import { ShowToastArgs } from "../../../../types/CustomToasttypes";
-import { PetSexType } from "../../../../types/UserGlobalTypes";
+import { FavoritesResponseType } from "../../views/favorites/interfaces/favoriteInterfaces";
 import * as S from "./style";
 
 interface FavoritesListProps {
-  axiosInstance: AxiosInstance;
+  favorites: FavoritesResponseType;
   showToast: (args: ShowToastArgs) => void;
+  unfavoritePet: (petId: number, index: number) => Promise<void>;
 }
 
 export const FavoritesList = ({
-  axiosInstance,
+  favorites,
   showToast,
+  unfavoritePet,
 }: FavoritesListProps) => {
   return (
     <S.ScrollContainer>
       <S.Container>
-        <FavoritesCard
-          axiosInstance={axiosInstance}
-          showToast={showToast}
-          isFavoite={true}
-          petName={"Mimo"}
-          petAge={"4"}
-          petId={1}
-          sex={PetSexType.MALE}
-        />
-        <FavoritesCard
-          axiosInstance={axiosInstance}
-          showToast={showToast}
-          isFavoite={true}
-          petName={"Mimo"}
-          petAge={"4"}
-          petId={1}
-          sex={PetSexType.MALE}
-        />
-        <FavoritesCard
-          axiosInstance={axiosInstance}
-          showToast={showToast}
-          isFavoite={true}
-          petName={"Mimo"}
-          petAge={"4"}
-          petId={1}
-          sex={PetSexType.MALE}
-        />
+        {favorites.map((fav, index) => (
+          <FavoritesCard
+            showToast={showToast}
+            unfavoritePet={unfavoritePet}
+            petName={fav?.pet?.name}
+            petAge={fav?.pet?.age}
+            ageType={fav?.pet?.ageType}
+            petId={fav?.pet?.id}
+            sex={fav?.pet?.sex}
+            imageUri={fav?.pet?.images[0].url}
+            index={index}
+            key={fav?.id}
+          />
+        ))}
       </S.Container>
     </S.ScrollContainer>
   );

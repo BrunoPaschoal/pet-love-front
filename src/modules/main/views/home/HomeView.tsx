@@ -12,16 +12,16 @@ interface HomeViewProps {
   userAvatar: string | undefined;
   userName: string | undefined;
   pets: PetResponseType[] | undefined;
+  favoriteOrUnfavoritePet: (petId: number, index: number) => Promise<void>;
   isPetsLoading: boolean;
-  axiosInstance: AxiosInstance;
   showToast: (args: ShowToastArgs) => void;
 }
 
 export const HomeView = ({
   showToast,
+  favoriteOrUnfavoritePet,
   userAvatar,
   userName,
-  axiosInstance,
   isPetsLoading,
   pets,
 }: HomeViewProps) => {
@@ -38,8 +38,8 @@ export const HomeView = ({
       <NewcomersSection
         pets={pets}
         isPetsLoading={isPetsLoading}
-        axiosInstance={axiosInstance}
         showToast={showToast}
+        favoriteOrUnfavoritePet={favoriteOrUnfavoritePet}
       />
       <CareSection />
     </S.Container>

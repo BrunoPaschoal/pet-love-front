@@ -5,13 +5,13 @@ import HeartFilledIcon from "../../../assets/icons/favorite-heart.svg";
 import * as S from "./style";
 import theme from "../../themes/index";
 import { useState } from "react";
-import { AxiosInstance } from "axios";
 import { ShowToastArgs } from "../../types/CustomToasttypes";
 
 interface FavoriteButtonProps {
   showToast: (args: ShowToastArgs) => void;
+  onPress: (petId: number, index: number) => Promise<void>;
+  index: number;
   isFavorite: boolean;
-  axiosInstance: AxiosInstance;
   petId: number;
   heartSize?: number;
   activitIndicatorColor: "white" | "primary";
@@ -20,14 +20,14 @@ interface FavoriteButtonProps {
 
 export const FavoriteButton = ({
   showToast,
+  onPress,
   isFavorite,
-  axiosInstance,
+  index,
   activitIndicatorColor,
   unfavoritedIconStroke,
   heartSize,
   petId,
 }: FavoriteButtonProps) => {
-  const [favorite, setFavorite] = useState(isFavorite);
   const [loading, setLoading] = useState(false);
 
   const iconHeartColor = theme["defaultAppTheme"].colors.primary;
@@ -40,45 +40,43 @@ export const FavoriteButton = ({
       return <UnfavoriteIconGray width={iconSize} height={iconSize} />;
   };
 
-  const onPresFavoriteIcon = async () => {
-    setLoading(true);
-    try {
-      if (!favorite) {
-        await axiosInstance.post(`favorite-pet/${petId}`);
-        showToast({
-          title: "Ebaa!",
-          message: "Bichinho favoritado com sucesso! 🥰",
-          type: "SUCCESS",
-        });
-      }
+  const onPressFavoriteIcon = async () => {
+    if (!loading) {
+      try {
+        setLoading(true);
+        await onPress(petId, index);
 
-      if (favorite) {
-        await axiosInstance.delete(`favorite-pet/${petId}`);
+        if (!isFavorite) {
+          showToast({
+            title: "Ebaa!",
+            message: "Bichinho favoritado com sucesso! 🥰",
+            type: "SUCCESS",
+          });
+        }
+      } catch (error) {
+        showToast({
+          title: "Opps!",
+          message: "Ocorreu um erro inesperado, por favor tente mais tarde! 😯",
+          type: "ERROR",
+        });
+      } finally {
+        setLoading(false);
       }
-      setFavorite(!favorite);
-    } catch {
-      showToast({
-        title: "Opps!",
-        message: "Ocorreu um erro inesperado, por favor tente mais tarde! 😯",
-        type: "ERROR",
-      });
-    } finally {
-      setLoading(false);
     }
   };
 
   return (
-    <S.Container onPress={onPresFavoriteIcon}>
+    <S.Container onPress={onPressFavoriteIcon}>
       {!loading && (
         <>
-          {favorite && (
+          {isFavorite && (
             <HeartFilledIcon
               width={iconSize}
               height={iconSize}
               fill={iconHeartColor}
             />
           )}
-          {!favorite && getUnfavoriteIcon()}
+          {!isFavorite && getUnfavoriteIcon()}
         </>
       )}
 

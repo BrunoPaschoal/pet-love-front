@@ -1,16 +1,20 @@
-import { AxiosInstance } from "axios";
 import { ShowToastArgs } from "../../../../types/CustomToasttypes";
 import { FavoritesList } from "../../components/FavoritesList";
+import { FavoritesResponseType } from "./interfaces/favoriteInterfaces";
 import * as S from "./style";
 
 interface FavoritesViewProps {
-  axiosInstance: AxiosInstance;
+  favorites: FavoritesResponseType;
+  favoritesLoading: boolean;
   showToast: (args: ShowToastArgs) => void;
+  unfavoritePet: (petId: number, index: number) => Promise<void>;
 }
 
 export const FavoritesView = ({
-  axiosInstance,
   showToast,
+  unfavoritePet,
+  favorites,
+  favoritesLoading,
 }: FavoritesViewProps) => {
   return (
     <S.Container>
@@ -22,7 +26,11 @@ export const FavoritesView = ({
           </S.Description>
         </S.DescriptionContainer>
       </S.HeaderContainer>
-      <FavoritesList axiosInstance={axiosInstance} showToast={showToast} />
+      <FavoritesList
+        showToast={showToast}
+        favorites={favorites}
+        unfavoritePet={unfavoritePet}
+      />
     </S.Container>
   );
 };

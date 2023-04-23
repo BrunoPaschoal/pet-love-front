@@ -16,3 +16,9 @@ export enum PetAgeType {
   YEARS = "YEARS",
   MONTHS = "MONTHS",
 }
+
+export type ImagesType = {
+  id: number;
+  url: string;
+  imageKey: string;
+};

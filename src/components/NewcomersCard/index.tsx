@@ -4,26 +4,27 @@ import theme from "../../themes";
 import { PetSexIndicator } from "../PetSexIndicator";
 import { PetSexType } from "../../types/UserGlobalTypes";
 import { FavoriteButton } from "../FavoriteButton";
-import { AxiosInstance } from "axios";
 import { ShowToastArgs } from "../../types/CustomToasttypes";
 
 interface NewcomersCardProps {
+  showToast: (args: ShowToastArgs) => void;
+  favoriteOrUnfavoritePet: (petId: number, index: number) => Promise<void>;
   petName: string;
   petCity: string;
   petState: string;
   sex: PetSexType;
   imageUri: string;
   isFavorite: boolean;
-  axiosInstance: AxiosInstance;
-  showToast: (args: ShowToastArgs) => void;
   petId: number;
+  index: number;
 }
 
 export const NewcomersCard = ({
   showToast,
+  favoriteOrUnfavoritePet,
+  index,
   isFavorite = false,
   imageUri,
-  axiosInstance,
   petCity,
   petId,
   petState,
@@ -49,9 +50,10 @@ export const NewcomersCard = ({
             <S.IconContainer>
               <FavoriteButton
                 isFavorite={isFavorite}
-                axiosInstance={axiosInstance}
+                onPress={favoriteOrUnfavoritePet}
                 unfavoritedIconStroke={"white"}
                 petId={petId}
+                index={index}
                 showToast={showToast}
                 activitIndicatorColor={"white"}
               />

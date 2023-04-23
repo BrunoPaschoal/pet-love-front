@@ -1,4 +1,8 @@
-import { PetAgeType, PetSexType } from "../../../../../types/UserGlobalTypes";
+import {
+  ImagesType,
+  PetAgeType,
+  PetSexType,
+} from "../../../../../types/UserGlobalTypes";
 
 export type MostRecentsPetDonationsResponseType = {
   pets: PetResponseType[];
@@ -15,16 +19,10 @@ export type PetResponseType = {
   ageType: PetAgeType;
   sex: PetSexType;
   createdAt: string;
-  isFavorite: false;
+  isFavorite: boolean;
   images: ImagesType[];
   address: {
     city: string;
     state: string;
   };
-};
-
-type ImagesType = {
-  id: number;
-  url: string;
-  imageKey: string;
 };

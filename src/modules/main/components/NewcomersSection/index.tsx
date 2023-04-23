@@ -6,16 +6,16 @@ import { ShowToastArgs } from "../../../../types/CustomToasttypes";
 import { NewcomersSkeleton } from "../../../../components/Skeletons/NewcomersSkeleton";
 
 interface NewcomersSectionProps {
+  favoriteOrUnfavoritePet: (petId: number, index: number) => Promise<void>;
+  showToast: (args: ShowToastArgs) => void;
   pets: PetResponseType[] | undefined;
   isPetsLoading: boolean;
-  axiosInstance: AxiosInstance;
-  showToast: (args: ShowToastArgs) => void;
 }
 
 export const NewcomersSection = ({
   showToast,
+  favoriteOrUnfavoritePet,
   isPetsLoading,
-  axiosInstance,
   pets,
 }: NewcomersSectionProps) => {
   return (
@@ -26,16 +26,17 @@ export const NewcomersSection = ({
           {!isPetsLoading &&
             pets &&
             pets?.length > 0 &&
-            pets.map((pet) => (
+            pets.map((pet, index) => (
               <NewcomersCard
                 petName={pet?.name}
                 petId={pet?.id}
+                index={index}
                 petCity={pet?.address?.city}
                 petState={pet?.address?.state}
                 sex={pet.sex}
                 imageUri={pet?.images[0]?.url}
                 isFavorite={pet.isFavorite}
-                axiosInstance={axiosInstance}
+                favoriteOrUnfavoritePet={favoriteOrUnfavoritePet}
                 showToast={showToast}
                 key={pet.id}
               />
