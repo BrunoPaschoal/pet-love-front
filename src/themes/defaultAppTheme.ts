@@ -12,6 +12,7 @@ export const defaultAppTheme = {
     background: "#fff",
     white: "#fff",
     placeholder: "#cecece",
+    profileMenuBg: "#FFF7F0",
     gray_01: "#F4F4F4",
     gray_02: "#CBCCCE",
     gray_03: "#7C7C7C",

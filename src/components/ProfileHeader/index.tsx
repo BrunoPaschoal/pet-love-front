@@ -1,8 +1,8 @@
 import * as S from "./style";
 
 interface ProfileHeaderProps {
-  title: string;
-  description: string;
+  title: string | undefined;
+  description: string | undefined;
   avatarUri: string | undefined;
 }
 

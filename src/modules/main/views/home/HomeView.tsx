@@ -1,4 +1,3 @@
-import { AxiosInstance } from "axios";
 import { ProfileHeader } from "../../../../components/ProfileHeader";
 import { getFirstName } from "../../../../helpers/getFirstName";
 import { ShowToastArgs } from "../../../../types/CustomToasttypes";

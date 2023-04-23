@@ -14,6 +14,7 @@ import FavoriteIcon from "../../assets/icons/favorite.svg";
 import FavoriteFilledIcon from "../../assets/icons/favorite-filled.svg";
 import MenuIcon from "../../assets/icons/menu.svg";
 import { Favorites } from "../modules/main/views/favorites";
+import { Menu } from "../modules/main/views/menu";
 
 const AppStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -104,7 +105,7 @@ const AppTabs = () => {
 
       <Tab.Screen
         name="Menu"
-        component={Home}
+        component={Menu}
         options={{
           title: "Menu",
           tabBarIcon: ({ color }) => (
