@@ -4,9 +4,12 @@ import HouseIcon from "../../../../../assets/icons/house.svg";
 import OngIcon from "../../../../../assets/icons/ongs.svg";
 import { AuthContext } from "../../../../context/AuthContext";
 import { MenuView } from "./MenuView";
+import { useNavigation } from "@react-navigation/native";
+import { AppNavigationTypes } from "../../../../routes/interfaces/propsNavigationApp";
 
 export const Menu = () => {
   const { user } = useContext(AuthContext);
+  const navigation = useNavigation<AppNavigationTypes>();
 
   const options: MenuOptionPros[] = [
     {

@@ -15,9 +15,13 @@ import FavoriteFilledIcon from "../../assets/icons/favorite-filled.svg";
 import MenuIcon from "../../assets/icons/menu.svg";
 import { Favorites } from "../modules/main/views/favorites";
 import { Menu } from "../modules/main/views/menu";
+import {
+  AppStackParamList,
+  AppTabParamList,
+} from "./interfaces/propsNavigationApp";
 
-const AppStack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+const AppStack = createStackNavigator<AppStackParamList>();
+const Tab = createBottomTabNavigator<AppTabParamList>();
 
 const AppTabs = () => {
   const iconSize = 20;

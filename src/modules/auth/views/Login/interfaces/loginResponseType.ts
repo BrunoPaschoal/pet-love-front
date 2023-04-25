@@ -5,7 +5,7 @@ export type LoginResponseType = {
   email: string;
   phone: string;
   role: RoleType;
-  avatar: string | null;
+  avatar: string | undefined;
   token: string;
   id: number;
 };

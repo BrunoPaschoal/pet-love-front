@@ -5,6 +5,6 @@ export type SignupResponseType = {
   email: string;
   phone: string;
   role: RoleType;
-  avatar: string | null;
+  avatar: string | undefined;
   id: number;
 };

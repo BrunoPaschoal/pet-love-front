@@ -12,7 +12,8 @@ export type LoginRouteParams = {
   password: string;
 };
 
-export type propsAuthStack =
+export type AuthNavigationTypes =
   NativeStackNavigationProp<propsNavigationAuthStack>;
 
+//Screen props
 export type LoginScreenRouteProp = RouteProp<propsNavigationAuthStack, "Login">;

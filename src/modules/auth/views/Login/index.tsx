@@ -12,7 +12,7 @@ import useKeyboardChecker from "../../../../hooks/useKeyboardChecker";
 import useErrorHandler from "../../../../hooks/useErrorHandler";
 import {
   LoginScreenRouteProp,
-  propsAuthStack,
+  AuthNavigationTypes,
 } from "../../../../routes/interfaces/propsNavigationAuthStack";
 
 export const Login = () => {
@@ -24,7 +24,7 @@ export const Login = () => {
   const route = useRoute<LoginScreenRouteProp>();
 
   const isKeyBoardOpen = useKeyboardChecker();
-  const navigation = useNavigation<propsAuthStack>();
+  const navigation = useNavigation<AuthNavigationTypes>();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordHide, setPasswordHide] = useState(true);

@@ -1,7 +1,6 @@
 import { useFocusEffect } from "@react-navigation/native";
 import { useContext, useState, useCallback } from "react";
 import { AuthContext } from "../../../../context/AuthContext";
-import { fakePromisse } from "../../../../helpers/fakePromisseHelper";
 import useAxios from "../../../../hooks/useAxios";
 import useCustomToast from "../../../../hooks/useCustomToast";
 import { HomeView } from "./HomeView";
