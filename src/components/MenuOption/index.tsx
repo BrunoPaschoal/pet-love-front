@@ -5,18 +5,16 @@ import theme from "../../themes/index";
 export interface MenuOptionPros {
   optionName: string;
   optionIcon: any;
-  redirectTo?: string;
-  customAction?: () => {};
+  onPress?: () => void;
 }
 
 export const MenuOption = ({
   optionIcon,
   optionName,
-  customAction,
-  redirectTo,
+  onPress,
 }: MenuOptionPros) => {
   return (
-    <S.Container>
+    <S.Container onPress={onPress}>
       <S.IconContainer>{optionIcon}</S.IconContainer>
       <S.OptionName>{optionName}</S.OptionName>
     </S.Container>

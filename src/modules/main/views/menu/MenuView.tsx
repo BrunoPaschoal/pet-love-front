@@ -29,6 +29,7 @@ export const MenuView = ({
           <MenuOption
             optionName={item.optionName}
             optionIcon={item.optionIcon}
+            onPress={item?.onPress}
             key={i}
           />
         ))}

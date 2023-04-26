@@ -16,7 +16,7 @@ export const OptionName = styled.Text`
     color: ${colors.gray_03};
     font-size: ${fontSizes.p2};
     font-family: ${fonts.PoppinsMedium};
-    margin-bottom: -5px;
+    margin-bottom: -3px;
   `}
 `;
 
