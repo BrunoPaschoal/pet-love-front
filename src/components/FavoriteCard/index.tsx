@@ -1,9 +1,10 @@
 import { ShowToastArgs } from "../../types/CustomToasttypes";
-import { PetSexType } from "../../types/UserGlobalTypes";
+import { PetAgeType, PetSexType } from "../../types/UserGlobalTypes";
 import { FavoriteButton } from "../FavoriteButton";
 import { PetSexIndicator } from "../PetSexIndicator";
 import theme from "../../themes";
 import * as S from "./style";
+import { getPetAgeTitle } from "../../helpers/getAgeTitle";
 
 interface FavoritesCardProps {
   showToast: (args: ShowToastArgs) => void;
@@ -11,7 +12,7 @@ interface FavoritesCardProps {
   petName: string;
   petAge: number;
   index: number;
-  ageType: string;
+  ageType: keyof typeof PetAgeType;
   petId: number;
   sex: PetSexType;
   distance?: string;
@@ -39,7 +40,7 @@ export const FavoritesCard = ({
       />
       <S.TextContentContainer>
         <S.PetName>{petName}</S.PetName>
-        <S.PetAge>{petAge}</S.PetAge>
+        <S.PetAge>{getPetAgeTitle(petAge, ageType)}</S.PetAge>
         <PetSexIndicator
           sex={sex}
           iconColor={theme["defaultAppTheme"].colors.gray_03}
