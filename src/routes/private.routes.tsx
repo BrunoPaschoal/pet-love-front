@@ -19,6 +19,7 @@ import {
   AppStackParamList,
   AppTabParamList,
 } from "./interfaces/propsNavigationApp";
+import { DonateStackRoutes } from "../modules/donate";
 
 const AppStack = createStackNavigator<AppStackParamList>();
 const Tab = createBottomTabNavigator<AppTabParamList>();
@@ -76,10 +77,11 @@ const AppTabs = () => {
       />
 
       <Tab.Screen
-        name="Ongs"
-        component={Home}
+        name="Donate"
+        component={DonateStackRoutes}
         options={{
-          title: "ONGs",
+          tabBarStyle: { display: "none" },
+          title: "Doar",
           tabBarIcon: ({ focused, color }) =>
             focused ? (
               <OngsFilledIcon width={iconSize} height={iconSize} fill={color} />

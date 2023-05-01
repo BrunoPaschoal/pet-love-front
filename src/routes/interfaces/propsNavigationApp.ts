@@ -7,10 +7,15 @@ export type AppStackParamList = {
   AppTabs: NavigatorScreenParams<AppTabParamList>;
 };
 
+export type DonateStackParamList = {
+  petsChoice: undefined;
+  petInfo: undefined;
+};
+
 export type AppTabParamList = {
   Home: undefined;
   Adopt: undefined;
-  Ongs: undefined;
+  Donate: NavigatorScreenParams<DonateStackParamList>;
   Favorites: undefined;
   Menu: undefined;
 };
