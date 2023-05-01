@@ -13,7 +13,7 @@ interface NewcomersCardProps {
   petCity: string;
   petState: string;
   sex: PetSexType;
-  imageUri: string;
+  imageUri: string | undefined;
   isFavorite: boolean;
   petId: number;
   index: number;

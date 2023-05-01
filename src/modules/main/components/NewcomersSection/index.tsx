@@ -1,9 +1,9 @@
 import * as S from "./style";
 import { NewcomersCard } from "../../../../components/NewcomersCard";
 import { PetResponseType } from "../../views/home/interfaces/HomeInterfaces";
-import { AxiosInstance } from "axios";
 import { ShowToastArgs } from "../../../../types/CustomToasttypes";
 import { NewcomersSkeleton } from "../../../../components/Skeletons/NewcomersSkeleton";
+import { getUrlFromMainImage } from "../../../../helpers/getUrlFromMainImage";
 
 interface NewcomersSectionProps {
   favoriteOrUnfavoritePet: (petId: number, index: number) => Promise<void>;
@@ -34,7 +34,7 @@ export const NewcomersSection = ({
                 petCity={pet?.address?.city}
                 petState={pet?.address?.state}
                 sex={pet.sex}
-                imageUri={pet?.images[0]?.url}
+                imageUri={getUrlFromMainImage(pet?.images)}
                 isFavorite={pet.isFavorite}
                 favoriteOrUnfavoritePet={favoriteOrUnfavoritePet}
                 showToast={showToast}

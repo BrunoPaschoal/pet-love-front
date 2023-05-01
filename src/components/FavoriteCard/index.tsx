@@ -15,7 +15,7 @@ interface FavoritesCardProps {
   petId: number;
   sex: PetSexType;
   distance?: string;
-  imageUri: string;
+  imageUri: string | undefined;
 }
 
 export const FavoritesCard = ({

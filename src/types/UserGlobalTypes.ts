@@ -21,4 +21,5 @@ export type ImagesType = {
   id: number;
   url: string;
   imageKey: string;
+  isMain: boolean;
 };

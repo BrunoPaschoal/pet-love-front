@@ -1,5 +1,6 @@
 import { FavoritesCard } from "../../../../components/FavoriteCard";
 import { FavoritesSkeleton } from "../../../../components/Skeletons/FavoritesSkeleton";
+import { getUrlFromMainImage } from "../../../../helpers/getUrlFromMainImage";
 import { ShowToastArgs } from "../../../../types/CustomToasttypes";
 import { FavoritesResponseType } from "../../views/favorites/interfaces/favoriteInterfaces";
 import * as S from "./style";
@@ -30,7 +31,7 @@ export const FavoritesList = ({
               ageType={fav?.pet?.ageType}
               petId={fav?.pet?.id}
               sex={fav?.pet?.sex}
-              imageUri={fav?.pet?.images[0].url}
+              imageUri={getUrlFromMainImage(fav?.pet?.images)}
               index={index}
               key={fav?.id}
             />
