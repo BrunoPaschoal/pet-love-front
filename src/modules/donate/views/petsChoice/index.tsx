@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { GenericButton } from "../../../../components/GenericButton";
+import { StackHeader } from "../../../../components/StackHeader";
 import { AppNavigationTypes } from "../../../../routes/interfaces/propsNavigationApp";
 import * as S from "./style";
 
@@ -17,6 +18,8 @@ export const PetsChoice = () => {
 
   return (
     <S.Container>
+      <StackHeader pageTitle={"Qual pet você gostaria de doar?"} />
+      <S.PageContent></S.PageContent>
       <GenericButton title={"Continuar"} onPressButton={() => onPress()} />
     </S.Container>
   );
