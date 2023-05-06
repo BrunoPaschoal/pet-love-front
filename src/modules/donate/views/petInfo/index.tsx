@@ -1,18 +1,18 @@
 import { useNavigation } from "@react-navigation/native";
-import { GenericButton } from "../../../../components/GenericButton";
 import { AppNavigationTypes } from "../../../../routes/interfaces/propsNavigationApp";
-import * as S from "./style";
+import { PetsInfoView } from "./petInfoView";
 
 export const PetInfo = () => {
   const navigation = useNavigation<AppNavigationTypes>();
 
-  const onPress = () => {
-    navigation.goBack();
+  const onSubmitButton = () => {
+    navigation.navigate("AppTabs", {
+      screen: "Donate",
+      params: {
+        screen: "petInfo",
+      },
+    });
   };
 
-  return (
-    <S.Container>
-      <GenericButton title={"Voltar"} onPressButton={() => onPress()} />
-    </S.Container>
-  );
+  return <PetsInfoView onSubmitButton={onSubmitButton} />;
 };

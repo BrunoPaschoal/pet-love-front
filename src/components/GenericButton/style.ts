@@ -1,13 +1,14 @@
-import { TouchableOpacityProps } from "react-native";
 import styled, { css } from "styled-components/native";
 
-interface ButtonProps extends TouchableOpacityProps {
+interface ButtonProps {
   customMaxWidth?: string;
+  isOutline?: boolean;
 }
 
 export const Button = styled.TouchableOpacity<ButtonProps>`
-  ${({ theme: { colors }, customMaxWidth }) => css`
-    background-color: ${colors.primary};
+  ${({ theme: { colors }, customMaxWidth, isOutline }) => css`
+    background-color: ${isOutline ? colors.white : colors.primary};
+    border: ${isOutline ? `2px solid ${colors.gray_02}` : "none"};
     height: 45px;
     border-radius: 5px;
     border-radius: 100px;
@@ -18,9 +19,13 @@ export const Button = styled.TouchableOpacity<ButtonProps>`
   `}
 `;
 
-export const ButtonText = styled.Text`
-  ${({ theme: { colors, fontSizes, fonts } }) => css`
-    color: ${colors.white};
+interface ButtonTextProps {
+  isOutline?: boolean;
+}
+
+export const ButtonText = styled.Text<ButtonTextProps>`
+  ${({ theme: { colors, fontSizes, fonts }, isOutline }) => css`
+    color: ${isOutline ? colors.primary : colors.white};
     font-size: ${fontSizes.heading_h4};
     font-family: ${fonts.PoppinsBold};
   `}

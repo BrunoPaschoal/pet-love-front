@@ -7,19 +7,22 @@ interface GenericButtonProps {
   customMaxWidth?: string;
   onPressButton: () => void;
   isLoading?: boolean;
+  isOutline?: boolean;
 }
 
 export const GenericButton = ({
-  title,
   onPressButton,
   customMaxWidth,
   isLoading,
+  isOutline,
+  title,
 }: GenericButtonProps) => {
   return (
     <S.Button
       activeOpacity={0.8}
       onPress={() => onPressButton()}
       customMaxWidth={customMaxWidth}
+      isOutline={isOutline}
     >
       {isLoading && (
         <ActivityIndicator
@@ -27,7 +30,7 @@ export const GenericButton = ({
           color={theme["defaultAppTheme"].colors.white}
         />
       )}
-      {!isLoading && <S.ButtonText>{title}</S.ButtonText>}
+      {!isLoading && <S.ButtonText isOutline={isOutline}>{title}</S.ButtonText>}
     </S.Button>
   );
 };
