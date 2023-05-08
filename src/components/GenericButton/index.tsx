@@ -8,21 +8,29 @@ interface GenericButtonProps {
   onPressButton: () => void;
   isLoading?: boolean;
   isOutline?: boolean;
+  isDisable?: boolean;
 }
 
 export const GenericButton = ({
   onPressButton,
   customMaxWidth,
+  isDisable,
   isLoading,
   isOutline,
   title,
 }: GenericButtonProps) => {
+  const buttonHandlePress = () => {
+    if (isDisable) return;
+    onPressButton();
+  };
   return (
     <S.Button
-      activeOpacity={0.8}
-      onPress={() => onPressButton()}
+      activeOpacity={0.6}
+      onPress={() => buttonHandlePress()}
       customMaxWidth={customMaxWidth}
       isOutline={isOutline}
+      isDisable={isDisable}
+      disabled={isDisable}
     >
       {isLoading && (
         <ActivityIndicator

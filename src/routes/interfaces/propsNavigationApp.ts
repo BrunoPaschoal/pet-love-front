@@ -1,5 +1,6 @@
 import { NavigatorScreenParams } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { PetType } from "../../types/UserGlobalTypes";
 
 export type AppNavigationTypes = NativeStackNavigationProp<AppStackParamList>;
 
@@ -9,7 +10,7 @@ export type AppStackParamList = {
 
 export type DonateStackParamList = {
   petsChoice: undefined;
-  petInfo: undefined;
+  petInfo: petInfoParams;
 };
 
 export type AppTabParamList = {
@@ -18,4 +19,9 @@ export type AppTabParamList = {
   Donate: NavigatorScreenParams<DonateStackParamList>;
   Favorites: undefined;
   Menu: undefined;
+};
+
+// Screen Params Interfaces
+type petInfoParams = {
+  petType: PetType;
 };

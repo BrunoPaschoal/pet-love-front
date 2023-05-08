@@ -14,3 +14,8 @@ export const PageContent = styled.View`
   width: 100%;
   align-items: center;
 `;
+
+export const SelectCardsContainer = styled.View`
+  flex-direction: row;
+  margin-top: 40px;
+`;

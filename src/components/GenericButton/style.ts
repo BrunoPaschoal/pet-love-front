@@ -3,10 +3,12 @@ import styled, { css } from "styled-components/native";
 interface ButtonProps {
   customMaxWidth?: string;
   isOutline?: boolean;
+  isDisable?: boolean;
 }
 
 export const Button = styled.TouchableOpacity<ButtonProps>`
-  ${({ theme: { colors }, customMaxWidth, isOutline }) => css`
+  ${({ theme: { colors }, customMaxWidth, isOutline, isDisable }) => css`
+    opacity: ${isDisable ? 0.4 : 1};
     background-color: ${isOutline ? colors.white : colors.primary};
     border: ${isOutline ? `2px solid ${colors.gray_02}` : "none"};
     height: 45px;
