@@ -1,4 +1,4 @@
-import { NavigatorScreenParams } from "@react-navigation/native";
+import { NavigatorScreenParams, RouteProp } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { PetType } from "../../types/UserGlobalTypes";
 
@@ -25,3 +25,6 @@ export type AppTabParamList = {
 type petInfoParams = {
   petType: PetType;
 };
+
+//Screen props
+export type PetInfoScreenRouteProp = RouteProp<DonateStackParamList, "petInfo">;
