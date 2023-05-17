@@ -1,5 +1,7 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { RadioListOptionsType } from "../../../../components/GenericRadioButtonInput";
 import useKeyboardChecker from "../../../../hooks/useKeyboardChecker";
 import {
   AppNavigationTypes,
@@ -12,6 +14,22 @@ export const PetInfo = () => {
   const isKeyBoardOpen = useKeyboardChecker();
   const navigation = useNavigation<AppNavigationTypes>();
 
+  const [radioSelected, setRadioSelected] = useState<string | undefined>(
+    undefined
+  );
+
+  const petSizeOptions: RadioListOptionsType[] = [
+    {
+      optionName: "Pequeno",
+    },
+    {
+      optionName: "Médio",
+    },
+    {
+      optionName: "Grande",
+    },
+  ];
+
   const {
     params: { petType },
   } = useRoute<PetInfoScreenRouteProp>();
@@ -19,6 +37,10 @@ export const PetInfo = () => {
   const { handleSubmit, control } = useForm<PetInfoFormSubmitType>({
     mode: "onSubmit",
   });
+
+  const handleSetRadioOption = (optionValue: string) => {
+    setRadioSelected(optionValue);
+  };
 
   const onSubmitButton = (formValue: PetInfoFormSubmitType) => {
     // Navegar para a próxima tela passando os parâmetros necessários
@@ -29,6 +51,9 @@ export const PetInfo = () => {
       onSubmitButton={handleSubmit(onSubmitButton)}
       control={control}
       isKeyBoardOpen={isKeyBoardOpen}
+      handleSetRadioOption={handleSetRadioOption}
+      radioOptionSelected={radioSelected}
+      radioListOptions={petSizeOptions}
     />
   );
 };

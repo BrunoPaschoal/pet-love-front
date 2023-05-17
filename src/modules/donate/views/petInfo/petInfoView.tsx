@@ -1,18 +1,28 @@
-import { Control, FieldValues } from "react-hook-form";
+import { Control } from "react-hook-form";
+import * as S from "./style";
 import { GenericButton } from "../../../../components/GenericButton";
 import { GenericTextInput } from "../../../../components/GenericTextInput";
 import { StackHeader } from "../../../../components/StackHeader";
 import { PetInfoFormSubmitType } from "./interfaces/PetInfoFormSubmitType";
-import * as S from "./style";
+import {
+  RadioButtonInput,
+  RadioListOptionsType,
+} from "../../../../components/GenericRadioButtonInput";
 
 interface PetsInfoViewProps {
   onSubmitButton: () => void;
+  handleSetRadioOption: (optionName: string) => void;
+  radioOptionSelected: string | undefined;
+  radioListOptions: RadioListOptionsType[];
   control: Control<PetInfoFormSubmitType, any>;
   isKeyBoardOpen: boolean;
 }
 
 export const PetsInfoView = ({
   onSubmitButton,
+  handleSetRadioOption,
+  radioListOptions,
+  radioOptionSelected,
   control,
   isKeyBoardOpen,
 }: PetsInfoViewProps) => {
@@ -32,6 +42,11 @@ export const PetsInfoView = ({
             errorMessage={"Ops, está esquecendo desse campo! 😉"}
             placeholder="Nome do bichinho"
             isRequired
+          />
+          <RadioButtonInput
+            valueSelected={radioOptionSelected}
+            onPress={handleSetRadioOption}
+            radioListOptions={radioListOptions}
           />
         </S.FormContainer>
       </S.PageContent>
