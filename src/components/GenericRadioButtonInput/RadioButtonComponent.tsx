@@ -1,22 +1,23 @@
+import { RadioListOptionsType } from ".";
 import * as S from "./style";
 
 interface RadioButtonComponentProps {
-  optioName: string;
+  option: RadioListOptionsType;
   isSelected: boolean;
   onPress: (optionName: string) => void;
 }
 
 export const RadioButtonComponent = ({
-  optioName,
+  option,
   isSelected,
   onPress,
 }: RadioButtonComponentProps) => {
   return (
-    <S.Container onPress={() => onPress(optioName)}>
+    <S.Container onPress={() => onPress(option.optionValue)}>
       <S.RadioCircle>
         {isSelected && <S.RadioInnerCircle></S.RadioInnerCircle>}
       </S.RadioCircle>
-      <S.OptionTitle>{optioName}</S.OptionTitle>
+      <S.OptionTitle>{option.optionName}</S.OptionTitle>
     </S.Container>
   );
 };

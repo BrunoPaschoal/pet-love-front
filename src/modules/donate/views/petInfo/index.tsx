@@ -21,12 +21,15 @@ export const PetInfo = () => {
   const petSizeOptions: RadioListOptionsType[] = [
     {
       optionName: "Pequeno",
+      optionValue: "SMALL",
     },
     {
       optionName: "Médio",
+      optionValue: "MID",
     },
     {
       optionName: "Grande",
+      optionValue: "LARGE",
     },
   ];
 
@@ -44,6 +47,7 @@ export const PetInfo = () => {
 
   const onSubmitButton = (formValue: PetInfoFormSubmitType) => {
     // Navegar para a próxima tela passando os parâmetros necessários
+    console.warn(formValue);
   };
 
   return (

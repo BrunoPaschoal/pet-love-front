@@ -44,9 +44,9 @@ export const PetsInfoView = ({
             isRequired
           />
           <RadioButtonInput
-            valueSelected={radioOptionSelected}
-            onPress={handleSetRadioOption}
             radioListOptions={radioListOptions}
+            name={"petSize"}
+            control={control}
           />
         </S.FormContainer>
       </S.PageContent>
