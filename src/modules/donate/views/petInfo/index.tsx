@@ -14,10 +14,6 @@ export const PetInfo = () => {
   const isKeyBoardOpen = useKeyboardChecker();
   const navigation = useNavigation<AppNavigationTypes>();
 
-  const [radioSelected, setRadioSelected] = useState<string | undefined>(
-    undefined
-  );
-
   const petSizeOptions: RadioListOptionsType[] = [
     {
       optionName: "Pequeno",
@@ -41,10 +37,6 @@ export const PetInfo = () => {
     mode: "onSubmit",
   });
 
-  const handleSetRadioOption = (optionValue: string) => {
-    setRadioSelected(optionValue);
-  };
-
   const onSubmitButton = (formValue: PetInfoFormSubmitType) => {
     // Navegar para a próxima tela passando os parâmetros necessários
     console.warn(formValue);
@@ -55,8 +47,6 @@ export const PetInfo = () => {
       onSubmitButton={handleSubmit(onSubmitButton)}
       control={control}
       isKeyBoardOpen={isKeyBoardOpen}
-      handleSetRadioOption={handleSetRadioOption}
-      radioOptionSelected={radioSelected}
       radioListOptions={petSizeOptions}
     />
   );

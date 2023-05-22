@@ -43,7 +43,7 @@ export const InputTextComponent = ({
   return (
     <S.Container>
       <S.InputLabel isDisable={isDisable}>{`${label}${
-        isRequired ? "*" : null
+        isRequired ? "*" : ""
       }`}</S.InputLabel>
       <S.InputContainer>
         {!mask && <S.TextInput {...baseInputProps} />}

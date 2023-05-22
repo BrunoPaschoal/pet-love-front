@@ -13,11 +13,11 @@ export const RadioButtonComponent = ({
   onPress,
 }: RadioButtonComponentProps) => {
   return (
-    <S.Container onPress={() => onPress(option.optionValue)}>
+    <S.OptionItemContainer onPress={() => onPress(option.optionValue)}>
       <S.RadioCircle>
         {isSelected && <S.RadioInnerCircle></S.RadioInnerCircle>}
       </S.RadioCircle>
       <S.OptionTitle>{option.optionName}</S.OptionTitle>
-    </S.Container>
+    </S.OptionItemContainer>
   );
 };

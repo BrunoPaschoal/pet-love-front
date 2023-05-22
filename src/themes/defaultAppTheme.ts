@@ -39,5 +39,6 @@ export const defaultAppTheme = {
   },
   margins: {
     screenSideMargin: "25px",
+    marginBetweenInputs: "25px",
   },
 };

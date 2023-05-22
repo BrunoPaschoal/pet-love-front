@@ -9,6 +9,7 @@ export type RadioListOptionsType = {
 
 interface RadioButtonInputProps {
   radioListOptions: RadioListOptionsType[];
+  label: string;
   name: string;
   control: Control<any, any> | undefined;
   isRequired?: boolean;
@@ -17,6 +18,7 @@ interface RadioButtonInputProps {
 
 export const RadioButtonInput = ({
   errorMessage,
+  label,
   isRequired,
   control,
   name,
@@ -33,16 +35,22 @@ export const RadioButtonInput = ({
         },
       }}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <S.RadioListContainer>
-          {radioListOptions.map((item, i) => (
-            <RadioButtonComponent
-              key={i}
-              option={item}
-              isSelected={item.optionValue === value}
-              onPress={onChange}
-            />
-          ))}
-        </S.RadioListContainer>
+        <S.Container>
+          <S.LabelContainer>
+            <S.InputLabel>{`${label}${isRequired ? "*" : ""}`}</S.InputLabel>
+          </S.LabelContainer>
+          <S.RadioListContainer>
+            {radioListOptions.map((item, i) => (
+              <RadioButtonComponent
+                key={i}
+                option={item}
+                isSelected={item.optionValue === value}
+                onPress={onChange}
+              />
+            ))}
+          </S.RadioListContainer>
+          {error?.message ? <S.TextError>{error?.message}</S.TextError> : null}
+        </S.Container>
       )}
     />
   );

@@ -11,8 +11,6 @@ import {
 
 interface PetsInfoViewProps {
   onSubmitButton: () => void;
-  handleSetRadioOption: (optionName: string) => void;
-  radioOptionSelected: string | undefined;
   radioListOptions: RadioListOptionsType[];
   control: Control<PetInfoFormSubmitType, any>;
   isKeyBoardOpen: boolean;
@@ -20,9 +18,7 @@ interface PetsInfoViewProps {
 
 export const PetsInfoView = ({
   onSubmitButton,
-  handleSetRadioOption,
   radioListOptions,
-  radioOptionSelected,
   control,
   isKeyBoardOpen,
 }: PetsInfoViewProps) => {
@@ -45,8 +41,11 @@ export const PetsInfoView = ({
           />
           <RadioButtonInput
             radioListOptions={radioListOptions}
+            label={"Porte"}
             name={"petSize"}
             control={control}
+            errorMessage={"Não se esqueça do porte do bichinho! 😜"}
+            isRequired
           />
         </S.FormContainer>
       </S.PageContent>
