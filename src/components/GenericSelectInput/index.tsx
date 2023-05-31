@@ -37,12 +37,6 @@ export const GenericSelectInput = ({
           value: isRequired || false,
           message: errorMessage || "Campo obrigatório",
         },
-        validate: (value) => {
-          if (validateField)
-            return (
-              validateField(value) || validateFailMessage || "Formato inválido"
-            );
-        },
       }}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <SelectInputComponent

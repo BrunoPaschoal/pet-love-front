@@ -3,7 +3,6 @@ import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
   ${({ theme: { margins } }) => css`
-    z-index: 10;
     width: 100%;
     margin-bottom: ${margins.marginBetweenInputs};
   `}
@@ -22,7 +21,7 @@ export const InputLabel = styled.Text<InputLabelProps>`
   `}
 `;
 
-export const InputContainer = styled.View`
+export const InputContainer = styled.TouchableOpacity`
   ${({ theme: { colors } }) => css`
     width: 100%;
     flex-direction: row;

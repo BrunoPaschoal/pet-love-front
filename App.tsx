@@ -7,6 +7,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { AuthProvider } from "./src/context/AuthContext";
 import { ToastProvider } from "react-native-toast-notifications";
 import { CustomToast } from "./src/components/CustomToast";
+import { EventProvider } from "react-native-outside-press";
 
 export default function App() {
   useEffect(() => {
@@ -18,14 +19,16 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <NavigationContainer>
-        <ThemeProvider>
-          <ToastProvider renderToast={CustomToast} offsetBottom={30}>
-            <StatusBar style="dark" backgroundColor="white" />
-            <Main />
-          </ToastProvider>
-        </ThemeProvider>
-      </NavigationContainer>
+      <EventProvider style={{ flex: 1 }}>
+        <NavigationContainer>
+          <ThemeProvider>
+            <ToastProvider renderToast={CustomToast} offsetBottom={30}>
+              <StatusBar style="dark" backgroundColor="white" />
+              <Main />
+            </ToastProvider>
+          </ThemeProvider>
+        </NavigationContainer>
+      </EventProvider>
     </AuthProvider>
   );
 }

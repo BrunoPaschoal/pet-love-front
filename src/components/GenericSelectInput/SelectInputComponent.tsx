@@ -6,14 +6,15 @@ import { prepareRenderItem } from "./RenderItem";
 import { mockList } from "./mock";
 import { FlatList } from "react-native-gesture-handler";
 import { ListItemType } from "./types/GenericSelectInputTypes";
+import OutsidePressHandler from "react-native-outside-press";
 
 interface SelectInputComponentProps {
   label: string;
   onIconPress?: () => void;
   isRequired?: boolean;
-  hideInputValue?: boolean;
   errorMessage?: string;
   value: string;
+  zIndex?: number;
   onChange: ((text: string) => void) | undefined;
   isDisable?: boolean;
   placeholder?: string;
@@ -22,11 +23,11 @@ interface SelectInputComponentProps {
 export const SelectInputComponent = ({
   label,
   onIconPress,
-  hideInputValue,
   value,
   onChange,
   errorMessage,
   isDisable,
+  zIndex,
   placeholder,
   isRequired,
 }: SelectInputComponentProps) => {
@@ -50,35 +51,41 @@ export const SelectInputComponent = ({
   }, [verifyItemSelected]);
 
   return (
-    <S.Container>
-      <S.InputLabel isDisable={isDisable}>{`${label}${
-        isRequired ? "*" : ""
-      }`}</S.InputLabel>
-      <S.InputContainer>
-        <S.ValueSelectedContainer>
-          {!itemSelected && <S.Placeholder>{placeholder}</S.Placeholder>}
-          {itemSelected && (
-            <S.Badge>
-              <S.SeletedItemLabel>{itemSelected.name}</S.SeletedItemLabel>
-            </S.Badge>
-          )}
-        </S.ValueSelectedContainer>
-        <S.IconContainer onPress={() => openOrCloseList()}>
-          {listOpen && <ArrowUp width={18} height={18} fill={"#666666"} />}
-          {!listOpen && <ArrowDown width={18} height={18} fill={"#666666"} />}
-        </S.IconContainer>
-      </S.InputContainer>
-      {listOpen && (
-        <S.ListItemsContainer>
-          <FlatList
-            data={mockList}
-            renderItem={prepareRenderItem(setItemSelected)}
-            keyExtractor={(_, index) => index.toString()}
-            persistentScrollbar
-          />
-        </S.ListItemsContainer>
-      )}
-      {errorMessage ? <S.TextError>{errorMessage}</S.TextError> : null}
-    </S.Container>
+    <OutsidePressHandler
+      disabled={false}
+      onOutsidePress={() => setListOpen(false)}
+      style={{ zIndex: zIndex ? zIndex : 2 }}
+    >
+      <S.Container>
+        <S.InputLabel isDisable={isDisable}>{`${label}${
+          isRequired ? "*" : ""
+        }`}</S.InputLabel>
+        <S.InputContainer onPress={() => openOrCloseList()}>
+          <S.ValueSelectedContainer>
+            {!itemSelected && <S.Placeholder>{placeholder}</S.Placeholder>}
+            {itemSelected && (
+              <S.Badge>
+                <S.SeletedItemLabel>{itemSelected.name}</S.SeletedItemLabel>
+              </S.Badge>
+            )}
+          </S.ValueSelectedContainer>
+          <S.IconContainer>
+            {listOpen && <ArrowUp width={18} height={18} fill={"#666666"} />}
+            {!listOpen && <ArrowDown width={18} height={18} fill={"#666666"} />}
+          </S.IconContainer>
+        </S.InputContainer>
+        {listOpen && (
+          <S.ListItemsContainer>
+            <FlatList
+              data={mockList}
+              renderItem={prepareRenderItem(setItemSelected)}
+              keyExtractor={(_, index) => index.toString()}
+              persistentScrollbar
+            />
+          </S.ListItemsContainer>
+        )}
+        {errorMessage ? <S.TextError>{errorMessage}</S.TextError> : null}
+      </S.Container>
+    </OutsidePressHandler>
   );
 };
