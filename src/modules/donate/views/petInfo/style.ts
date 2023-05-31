@@ -9,12 +9,6 @@ export const Container = styled.View`
   `}
 `;
 
-export const PageContent = styled.View`
-  flex: 1;
-  width: 100%;
-  align-items: center;
-`;
-
 export const PageDescription = styled.Text`
   ${({ theme: { colors, fonts, fontSizes } }) => css`
     margin-top: 20px;
@@ -22,6 +16,12 @@ export const PageDescription = styled.Text`
     font-size: ${fontSizes.p2};
     color: ${colors.gray_05};
   `}
+`;
+
+export const PageContent = styled.View`
+  flex: 1;
+  width: 100%;
+  align-items: center;
 `;
 
 export const FormContainer = styled.View`

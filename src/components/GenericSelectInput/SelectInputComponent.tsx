@@ -81,6 +81,7 @@ export const SelectInputComponent = ({
               renderItem={prepareRenderItem(setItemSelected)}
               keyExtractor={(_, index) => index.toString()}
               persistentScrollbar
+              nestedScrollEnabled={true}
             />
           </S.ListItemsContainer>
         )}

@@ -4,7 +4,6 @@ import { SelectInputComponent } from "./SelectInputComponent";
 interface GenericSelectInputProps {
   label: string;
   onIconPress?: () => void;
-  hideInputValue?: boolean;
   name: string;
   control: Control<any, any> | undefined;
   isRequired?: boolean;
@@ -18,7 +17,6 @@ interface GenericSelectInputProps {
 export const GenericSelectInput = ({
   label,
   onIconPress,
-  hideInputValue,
   control,
   name,
   isRequired,
@@ -44,7 +42,6 @@ export const GenericSelectInput = ({
           value={value}
           onChange={onChange}
           errorMessage={error?.message}
-          hideInputValue={hideInputValue}
           onIconPress={onIconPress}
           isDisable={isDisable}
           placeholder={placeholder}

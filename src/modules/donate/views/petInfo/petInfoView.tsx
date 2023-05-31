@@ -3,12 +3,13 @@ import * as S from "./style";
 import { GenericButton } from "../../../../components/GenericButton";
 import { StackHeader } from "../../../../components/StackHeader";
 import { PetInfoFormSubmitType } from "./interfaces/PetInfoFormSubmitType";
+import { GenericTextInput } from "../../../../components/GenericTextInput";
+import { GenericSelectInput } from "../../../../components/GenericSelectInput";
 import {
   RadioButtonInput,
   RadioListOptionsType,
 } from "../../../../components/GenericRadioButtonInput";
-import { GenericTextInput } from "../../../../components/GenericTextInput";
-import { GenericSelectInput } from "../../../../components/GenericSelectInput";
+import { ScrollView } from "react-native-gesture-handler";
 
 interface PetsInfoViewProps {
   onSubmitButton: () => void;
