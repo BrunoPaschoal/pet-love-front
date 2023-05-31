@@ -7,6 +7,7 @@ import { mockList } from "./mock";
 import { FlatList } from "react-native-gesture-handler";
 import { ListItemType } from "./types/GenericSelectInputTypes";
 import OutsidePressHandler from "react-native-outside-press";
+import { LogBox } from "react-native";
 
 interface SelectInputComponentProps {
   label: string;
@@ -31,6 +32,10 @@ export const SelectInputComponent = ({
   placeholder,
   isRequired,
 }: SelectInputComponentProps) => {
+  useEffect(() => {
+    LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
+  }, []);
+
   const [listOpen, setListOpen] = useState<boolean>(false);
   const [itemSelected, setItemSelected] = useState<ListItemType | undefined>(
     undefined
