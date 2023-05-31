@@ -1,6 +1,4 @@
 import * as S from "./style";
-import HouseIcon from "../../../assets/icons/house.svg";
-import theme from "../../themes/index";
 
 export interface MenuOptionPros {
   optionName: string;

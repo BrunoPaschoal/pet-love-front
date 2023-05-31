@@ -1,10 +1,10 @@
 import * as S from "./style";
 import { GenericButton } from "./../../../../components/GenericButton";
-import { GenericTextInput } from "../../../../components/GenericTextInput";
 import { Control } from "react-hook-form";
 import { ReactNode } from "react";
 import { LoginFormSubmitType } from "./interfaces/loginFormSubmitType";
 import { CallToActionText } from "../../components/CallToActionText";
+import { GenericTextInput } from "../../../../components/GenericTextInput";
 
 interface LoginScreenProps {
   onIconPress?: () => void;

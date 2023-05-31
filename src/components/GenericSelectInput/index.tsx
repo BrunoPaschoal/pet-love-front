@@ -1,39 +1,33 @@
-import { ReactNode } from "react";
 import { Control, Controller } from "react-hook-form";
-import { TextInputMaskTypeProp } from "react-native-masked-text";
-import { InputTextComponent } from "./InputTextComponent";
+import { SelectInputComponent } from "./SelectInputComponent";
 
-interface GenericTextInputProps {
+interface GenericSelectInputProps {
   label: string;
-  icon?: ReactNode;
   onIconPress?: () => void;
   hideInputValue?: boolean;
   name: string;
   control: Control<any, any> | undefined;
   isRequired?: boolean;
   errorMessage?: string;
-  mask?: TextInputMaskTypeProp;
   validateField?: (value: string) => any;
   validateFailMessage?: string;
   isDisable?: boolean;
   placeholder?: string;
 }
 
-export const GenericTextInput = ({
+export const GenericSelectInput = ({
   label,
-  icon,
   onIconPress,
   hideInputValue,
   control,
   name,
   isRequired,
   errorMessage,
-  mask,
   validateFailMessage,
   validateField,
   isDisable,
   placeholder,
-}: GenericTextInputProps) => {
+}: GenericSelectInputProps) => {
   return (
     <Controller
       control={control}
@@ -51,15 +45,13 @@ export const GenericTextInput = ({
         },
       }}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <InputTextComponent
+        <SelectInputComponent
           label={label}
           value={value}
           onChange={onChange}
           errorMessage={error?.message}
           hideInputValue={hideInputValue}
-          icon={icon}
           onIconPress={onIconPress}
-          mask={mask}
           isDisable={isDisable}
           placeholder={placeholder}
           isRequired={isRequired}
