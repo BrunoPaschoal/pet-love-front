@@ -14,11 +14,3 @@ export const RenderItem = ({ item, onSelect }: RenderItemProps) => (
     </S.RenderItemContainer>
   </TouchableWithoutFeedback>
 );
-
-export const prepareRenderItem = (onSelect: (item: ListItemType) => void) => {
-  const renderItem = ({ item }: any) => (
-    <RenderItem item={item} onSelect={onSelect} />
-  );
-
-  return renderItem;
-};

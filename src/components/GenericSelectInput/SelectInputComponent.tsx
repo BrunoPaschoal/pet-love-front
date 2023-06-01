@@ -2,12 +2,11 @@ import * as S from "./style";
 import ArrowDown from "../../../assets/icons/arrow-down.svg";
 import ArrowUp from "../../../assets/icons/arrow-up.svg";
 import { useCallback, useEffect, useState } from "react";
-import { prepareRenderItem } from "./RenderItem";
+import { RenderItem } from "./RenderItem";
 import { mockList } from "./mock";
-import { FlatList } from "react-native-gesture-handler";
 import { ListItemType } from "./types/GenericSelectInputTypes";
 import OutsidePressHandler from "react-native-outside-press";
-import { LogBox } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 
 interface SelectInputComponentProps {
   label: string;
@@ -32,10 +31,6 @@ export const SelectInputComponent = ({
   placeholder,
   isRequired,
 }: SelectInputComponentProps) => {
-  useEffect(() => {
-    LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
-  }, []);
-
   const [listOpen, setListOpen] = useState<boolean>(false);
   const [itemSelected, setItemSelected] = useState<ListItemType | undefined>(
     undefined
@@ -81,13 +76,11 @@ export const SelectInputComponent = ({
         </S.InputContainer>
         {listOpen && (
           <S.ListItemsContainer>
-            <FlatList
-              data={mockList}
-              renderItem={prepareRenderItem(setItemSelected)}
-              keyExtractor={(_, index) => index.toString()}
-              persistentScrollbar
-              nestedScrollEnabled={true}
-            />
+            <ScrollView nestedScrollEnabled>
+              {mockList.map((item, i) => (
+                <RenderItem item={item} onSelect={setItemSelected} key={i} />
+              ))}
+            </ScrollView>
           </S.ListItemsContainer>
         )}
         {errorMessage ? <S.TextError>{errorMessage}</S.TextError> : null}

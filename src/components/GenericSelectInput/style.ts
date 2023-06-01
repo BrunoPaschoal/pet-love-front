@@ -52,6 +52,7 @@ export const ListItemsContainer = styled.View`
     overflow: hidden;
     background-color: ${colors.gray_01};
     border: solid 1px #e7e7e7;
+    z-index: 2;
   `}
 `;
 
