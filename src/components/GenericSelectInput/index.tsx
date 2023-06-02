@@ -3,26 +3,20 @@ import { SelectInputComponent } from "./SelectInputComponent";
 
 interface GenericSelectInputProps {
   label: string;
-  onIconPress?: () => void;
   name: string;
   control: Control<any, any> | undefined;
   isRequired?: boolean;
   errorMessage?: string;
-  validateField?: (value: string) => any;
-  validateFailMessage?: string;
   isDisable?: boolean;
   placeholder?: string;
 }
 
 export const GenericSelectInput = ({
   label,
-  onIconPress,
   control,
   name,
   isRequired,
   errorMessage,
-  validateFailMessage,
-  validateField,
   isDisable,
   placeholder,
 }: GenericSelectInputProps) => {
@@ -42,7 +36,6 @@ export const GenericSelectInput = ({
           value={value}
           onChange={onChange}
           errorMessage={error?.message}
-          onIconPress={onIconPress}
           isDisable={isDisable}
           placeholder={placeholder}
           isRequired={isRequired}

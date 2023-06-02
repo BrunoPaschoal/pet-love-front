@@ -8,22 +8,21 @@ import { mockList } from "./mock";
 import { ListItemType } from "./types/GenericSelectInputTypes";
 import OutsidePressHandler from "react-native-outside-press";
 import { ScrollView } from "react-native-gesture-handler";
+import { checkIfTheyAreTheSameValues } from "../../helpers/checkIfTheyAreTheSameValues";
 
 interface SelectInputComponentProps {
   label: string;
-  onIconPress?: () => void;
   isRequired?: boolean;
   errorMessage?: string;
-  value: string;
+  value: ListItemType;
   zIndex?: number;
-  onChange: ((text: string) => void) | undefined;
+  onChange: (selectedItem: any) => void;
   isDisable?: boolean;
   placeholder?: string;
 }
 
 export const SelectInputComponent = ({
   label,
-  onIconPress,
   value,
   onChange,
   errorMessage,
@@ -33,23 +32,20 @@ export const SelectInputComponent = ({
   isRequired,
 }: SelectInputComponentProps) => {
   const [listOpen, setListOpen] = useState<boolean>(false);
-  const [itemSelected, setItemSelected] = useState<ListItemType | undefined>(
-    undefined
-  );
 
   const openOrCloseList = () => {
     setListOpen(!listOpen);
   };
 
   const clearSelection = () => {
-    setItemSelected(undefined);
+    onChange(undefined);
   };
 
   const verifyWhenItemIsSelected = useCallback(() => {
-    if (itemSelected) {
+    if (value) {
       setListOpen(false);
     }
-  }, [itemSelected]);
+  }, [value]);
 
   useEffect(() => {
     verifyWhenItemIsSelected();
@@ -67,27 +63,23 @@ export const SelectInputComponent = ({
         }`}</S.InputLabel>
         <S.InputContainer onPress={() => openOrCloseList()}>
           <S.ValueSelectedContainer>
-            {!itemSelected && <S.Placeholder>{placeholder}</S.Placeholder>}
-            {itemSelected && (
+            {!value && <S.Placeholder>{placeholder}</S.Placeholder>}
+            {value && (
               <S.Badge>
-                <S.SeletedItemLabel>{itemSelected.name}</S.SeletedItemLabel>
+                <S.SeletedItemLabel>{value.name}</S.SeletedItemLabel>
               </S.Badge>
             )}
           </S.ValueSelectedContainer>
           <S.IconContainer
-            onPress={
-              itemSelected ? () => clearSelection() : () => openOrCloseList()
-            }
+            onPress={value ? () => clearSelection() : () => openOrCloseList()}
           >
-            {listOpen && !itemSelected && (
+            {listOpen && !value && (
               <ArrowUp width={18} height={18} fill={"#666666"} />
             )}
-            {!listOpen && !itemSelected && (
+            {!listOpen && !value && (
               <ArrowDown width={18} height={18} fill={"#666666"} />
             )}
-            {itemSelected && (
-              <CloseIcon width={12} height={12} fill={"#666666"} />
-            )}
+            {value && <CloseIcon width={12} height={12} fill={"#666666"} />}
           </S.IconContainer>
         </S.InputContainer>
         {listOpen && (
@@ -96,9 +88,12 @@ export const SelectInputComponent = ({
               {mockList.map((item, i) => (
                 <RenderItem
                   item={item}
-                  onSelect={setItemSelected}
+                  onSelect={onChange}
                   key={i}
-                  isSelected={itemSelected?.value === item.value}
+                  isSelected={checkIfTheyAreTheSameValues(
+                    value?.value,
+                    item?.value
+                  )}
                 />
               ))}
             </ScrollView>

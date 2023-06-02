@@ -108,7 +108,7 @@ export const Badge = styled.View`
     border-radius: 5px;
     margin-left: 10px;
     padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 5px;
     padding-top: 2px;
     padding-bottom: 2px;
   `}
