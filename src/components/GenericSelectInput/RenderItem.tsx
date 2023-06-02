@@ -5,12 +5,14 @@ import { ListItemType } from "./types/GenericSelectInputTypes";
 interface RenderItemProps {
   item: ListItemType;
   onSelect: (item: ListItemType) => void;
+  isSelected: boolean;
 }
 
-export const RenderItem = ({ item, onSelect }: RenderItemProps) => (
+export const RenderItem = ({ item, onSelect, isSelected }: RenderItemProps) => (
   <TouchableWithoutFeedback onPress={() => onSelect(item)}>
     <S.RenderItemContainer>
       <S.RenderItemLabel>{item.name}</S.RenderItemLabel>
+      {isSelected && <S.SelectIndicator />}
     </S.RenderItemContainer>
   </TouchableWithoutFeedback>
 );

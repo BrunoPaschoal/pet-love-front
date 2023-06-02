@@ -1,6 +1,7 @@
 import * as S from "./style";
 import ArrowDown from "../../../assets/icons/arrow-down.svg";
 import ArrowUp from "../../../assets/icons/arrow-up.svg";
+import CloseIcon from "../../../assets/icons/close.svg";
 import { useCallback, useEffect, useState } from "react";
 import { RenderItem } from "./RenderItem";
 import { mockList } from "./mock";
@@ -40,15 +41,19 @@ export const SelectInputComponent = ({
     setListOpen(!listOpen);
   };
 
-  const verifyItemSelected = useCallback(() => {
+  const clearSelection = () => {
+    setItemSelected(undefined);
+  };
+
+  const verifyWhenItemIsSelected = useCallback(() => {
     if (itemSelected) {
       setListOpen(false);
     }
   }, [itemSelected]);
 
   useEffect(() => {
-    verifyItemSelected();
-  }, [verifyItemSelected]);
+    verifyWhenItemIsSelected();
+  }, [verifyWhenItemIsSelected]);
 
   return (
     <OutsidePressHandler
@@ -69,16 +74,32 @@ export const SelectInputComponent = ({
               </S.Badge>
             )}
           </S.ValueSelectedContainer>
-          <S.IconContainer>
-            {listOpen && <ArrowUp width={18} height={18} fill={"#666666"} />}
-            {!listOpen && <ArrowDown width={18} height={18} fill={"#666666"} />}
+          <S.IconContainer
+            onPress={
+              itemSelected ? () => clearSelection() : () => openOrCloseList()
+            }
+          >
+            {listOpen && !itemSelected && (
+              <ArrowUp width={18} height={18} fill={"#666666"} />
+            )}
+            {!listOpen && !itemSelected && (
+              <ArrowDown width={18} height={18} fill={"#666666"} />
+            )}
+            {itemSelected && (
+              <CloseIcon width={12} height={12} fill={"#666666"} />
+            )}
           </S.IconContainer>
         </S.InputContainer>
         {listOpen && (
           <S.ListItemsContainer>
-            <ScrollView nestedScrollEnabled>
+            <ScrollView nestedScrollEnabled persistentScrollbar>
               {mockList.map((item, i) => (
-                <RenderItem item={item} onSelect={setItemSelected} key={i} />
+                <RenderItem
+                  item={item}
+                  onSelect={setItemSelected}
+                  key={i}
+                  isSelected={itemSelected?.value === item.value}
+                />
               ))}
             </ScrollView>
           </S.ListItemsContainer>

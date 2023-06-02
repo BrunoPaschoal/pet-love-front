@@ -60,12 +60,25 @@ export const RenderItemContainer = styled.View`
   ${({ theme: { colors } }) => css`
     background-color: ${colors.gray_01};
     width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     padding-top: 6px;
     padding-bottom: 6px;
     padding-left: 10px;
     padding-right: 10px;
     border-bottom-color: #e7e7e7;
     border-bottom-width: 1px;
+  `}
+`;
+
+export const SelectIndicator = styled.View`
+  ${({ theme: { colors } }) => css`
+    background-color: ${colors.secondary};
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+    border-radius: 30px;
   `}
 `;
 
