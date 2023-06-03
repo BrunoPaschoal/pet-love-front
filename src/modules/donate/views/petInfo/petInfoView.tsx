@@ -27,7 +27,7 @@ export const PetsInfoView = ({
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <S.Container>
-        <StackHeader pageTitle={"Informações do pet"} />
+        <StackHeader pageTitle="Informações do pet" />
         <S.PageContent>
           <S.PageDescription>
             Agora é o momento de adicionar informações essenciais do bichinho
@@ -35,34 +35,34 @@ export const PetsInfoView = ({
           </S.PageDescription>
           <S.FormContainer>
             <GenericTextInput
-              label={"Nome do Pet"}
+              label="Nome do Pet"
               control={control}
-              name={"name"}
-              errorMessage={"Ops, está esquecendo desse campo! 😉"}
+              name="name"
+              errorMessage="Ops, está esquecendo desse campo! 😉"
               placeholder="Nome do bichinho"
               isRequired
             />
             <GenericSelectInput
-              label={"Raça"}
+              label="Raça"
               control={control}
-              name={"breed"}
-              errorMessage={"Ops, está esquecendo desse campo! 😉"}
+              name="breed"
+              errorMessage="Ops, está esquecendo desse campo! 😉"
               placeholder="Selecione..."
               isRequired
             />
             <RadioButtonInput
               radioListOptions={radioListOptions}
-              label={"Porte"}
-              name={"petSize"}
+              label="Porte"
+              name="petSize"
               control={control}
-              errorMessage={"Não se esqueça do porte do bichinho! 😜"}
+              errorMessage="Não se esqueça do porte do bichinho! 😜"
               isRequired
             />
           </S.FormContainer>
         </S.PageContent>
         {!isKeyBoardOpen && (
           <GenericButton
-            title={"Próximo"}
+            title="Próximo"
             onPressButton={() => onSubmitButton()}
             isOutline
           />

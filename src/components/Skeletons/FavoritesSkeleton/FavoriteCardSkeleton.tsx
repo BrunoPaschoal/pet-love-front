@@ -5,7 +5,7 @@ export const FavoriteCardSkeleton = () => (
   <View style={{ marginBottom: 10 }}>
     <Skeleton
       height={100}
-      width={"100%"}
+      width="100%"
       radius={10}
       colorMode="light"
       transition={{

@@ -51,11 +51,11 @@ export const NewcomersCard = ({
               <FavoriteButton
                 isFavorite={isFavorite}
                 onPress={favoriteOrUnfavoritePet}
-                unfavoritedIconStroke={"white"}
+                unfavoritedIconStroke="white"
                 petId={petId}
                 index={index}
                 showToast={showToast}
-                activitIndicatorColor={"white"}
+                activitIndicatorColor="white"
               />
             </S.IconContainer>
           </S.Content>

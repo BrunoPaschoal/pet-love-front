@@ -39,16 +39,16 @@ export const SignupView = ({
         <S.Title>Cadastre sua conta</S.Title>
         <S.Content>
           <GenericTextInput
-            label={"Nome completo"}
+            label="Nome completo"
             control={control}
-            name={"name"}
+            name="name"
             placeholder="Seu nome completo"
             isRequired
           />
           <GenericTextInput
-            label={"Celular"}
+            label="Celular"
             control={control}
-            name={"phone"}
+            name="phone"
             placeholder="(00) 0 0000-0000"
             validateFailMessage="Formato inválido."
             validateField={validateCellphoneField}
@@ -56,18 +56,18 @@ export const SignupView = ({
             isRequired
           />
           <GenericTextInput
-            label={"E-mail"}
+            label="E-mail"
             control={control}
-            name={"email"}
+            name="email"
             validateFailMessage="Formato de e-mail inválido"
             validateField={validateEmailField}
             placeholder="exemplo@email.com"
             isRequired
           />
           <GenericTextInput
-            label={"Senha"}
+            label="Senha"
             control={control}
-            name={"password"}
+            name="password"
             hideInputValue={hidePassword}
             onIconPress={oIconPress}
             validateFailMessage="A senha de conter pelo menos 8 caracteres, letras maiúsculas, minúsculas e caracteres especiais."

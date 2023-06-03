@@ -7,7 +7,6 @@ import { AppNavigationTypes } from "../../../../routes/interfaces/propsNavigatio
 import { Alert } from "react-native";
 
 import HouseIcon from "../../../../../assets/icons/house.svg";
-import OngIcon from "../../../../../assets/icons/ongs.svg";
 import LogoutIcon from "../../../../../assets/icons/logout.svg";
 import HeartPlusIcon from "../../../../../assets/icons/heart-plus.svg";
 import ConfigIcon from "../../../../../assets/icons/config.svg";
@@ -30,14 +29,6 @@ export const Menu = () => {
       optionName: "Doe um pet",
       optionIcon: <HeartPlusIcon />,
       onPress: () => Alert.alert("Em construção", "Tela não implementada."),
-    },
-    {
-      optionName: "Ajude uma Ong",
-      optionIcon: <OngIcon />,
-      onPress: () =>
-        navigation.navigate("AppTabs", {
-          screen: "Ongs",
-        }),
     },
     {
       optionName: "Favoritos",

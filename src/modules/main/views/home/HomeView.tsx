@@ -29,7 +29,7 @@ export const HomeView = ({
       <S.HeaderContainer>
         <ProfileHeader
           title={`Olá, ${getFirstName(userName)}`}
-          description={"Seja bem-vindo(a)"}
+          description="Seja bem-vindo(a)"
           avatarUri={userAvatar}
         />
       </S.HeaderContainer>

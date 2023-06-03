@@ -34,16 +34,16 @@ export const LoginScreen = ({
       <S.Title>Login</S.Title>
       <S.Content>
         <GenericTextInput
-          label={"E-mail"}
+          label="E-mail"
           control={control}
-          name={"email"}
+          name="email"
           validateFailMessage="Formato de e-mail inválido"
           validateField={validateEmailField}
           placeholder="exemplo@email.com"
           isRequired
         />
         <GenericTextInput
-          label={"Senha"}
+          label="Senha"
           control={control}
           name={"password"}
           hideInputValue={hidePassword}

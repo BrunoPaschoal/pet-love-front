@@ -51,8 +51,8 @@ export const FavoritesCard = ({
         <S.DistanceFlag>12km de você</S.DistanceFlag>
       </S.TextContentContainer>
       <FavoriteButton
-        activitIndicatorColor={"primary"}
-        unfavoritedIconStroke={"gray"}
+        activitIndicatorColor="primary"
+        unfavoritedIconStroke="gray"
         isFavorite={true}
         petId={petId}
         showToast={showToast}
