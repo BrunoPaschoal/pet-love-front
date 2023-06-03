@@ -33,7 +33,7 @@ export const GenericSelectInput = ({
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <SelectInputComponent
           label={label}
-          value={value}
+          itemSelected={value}
           onChange={onChange}
           errorMessage={error?.message}
           isDisable={isDisable}

@@ -1,4 +1,3 @@
-import { TextInputMask } from "react-native-masked-text";
 import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
@@ -51,7 +50,7 @@ export const ListItemsContainer = styled.View`
     padding-top: 5px;
     overflow: hidden;
     background-color: ${colors.gray_01};
-    border: solid 1px #e7e7e7;
+    border: solid 1px ${colors.inputSelectDivisorBorder};
     z-index: 2;
   `}
 `;
@@ -67,7 +66,7 @@ export const RenderItemContainer = styled.View`
     padding-bottom: 6px;
     padding-left: 10px;
     padding-right: 10px;
-    border-bottom-color: #e7e7e7;
+    border-bottom-color: ${colors.inputSelectDivisorBorder};
     border-bottom-width: 1px;
   `}
 `;
@@ -104,7 +103,7 @@ export const Badge = styled.View`
   ${({ theme: { colors } }) => css`
     justify-content: center;
     align-items: center;
-    background-color: #e4e4e4;
+    background-color: ${colors.inputSelectBg};
     border-radius: 5px;
     margin-left: 10px;
     padding-left: 15px;
