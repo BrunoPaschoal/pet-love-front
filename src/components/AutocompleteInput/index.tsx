@@ -1,9 +1,12 @@
 import { Control, Controller } from "react-hook-form";
-import { SelectInputComponent } from "./SelectInputComponent";
+import { AutocompleteInputComponent } from "./AutocompleteInputComponent";
+import { ListItemType } from "./types/AutocompleteInputTypes";
 
-interface GenericSelectInputProps {
+interface AutocompleteInputProps {
   label: string;
   name: string;
+  zIndex?: number;
+  data: ListItemType[];
   control: Control<any, any> | undefined;
   isRequired?: boolean;
   errorMessage?: string;
@@ -11,15 +14,17 @@ interface GenericSelectInputProps {
   placeholder?: string;
 }
 
-export const GenericSelectInput = ({
+export const AutocompleteInput = ({
   label,
   control,
+  zIndex,
+  data,
   name,
   isRequired,
   errorMessage,
   isDisable,
   placeholder,
-}: GenericSelectInputProps) => {
+}: AutocompleteInputProps) => {
   return (
     <Controller
       control={control}
@@ -31,11 +36,13 @@ export const GenericSelectInput = ({
         },
       }}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
-        <SelectInputComponent
+        <AutocompleteInputComponent
+          data={data}
           label={label}
           itemSelected={value}
           onChange={onChange}
           errorMessage={error?.message}
+          zIndex={zIndex}
           isDisable={isDisable}
           placeholder={placeholder}
           isRequired={isRequired}

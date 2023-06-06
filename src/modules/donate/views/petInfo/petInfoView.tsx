@@ -4,12 +4,14 @@ import { GenericButton } from "../../../../components/GenericButton";
 import { StackHeader } from "../../../../components/StackHeader";
 import { PetInfoFormSubmitType } from "./interfaces/PetInfoFormSubmitType";
 import { GenericTextInput } from "../../../../components/GenericTextInput";
-import { GenericSelectInput } from "../../../../components/GenericSelectInput";
+import { SelectInput } from "../../../../components/SelectInput";
 import { ScrollView } from "react-native";
 import {
   RadioButtonInput,
   RadioListOptionsType,
 } from "../../../../components/GenericRadioButtonInput";
+import { AutocompleteInput } from "../../../../components/AutocompleteInput";
+import { autocompleteMockList } from "../../../../components/AutocompleteInput/mock";
 
 interface PetsInfoViewProps {
   onSubmitButton: () => void;
@@ -42,12 +44,23 @@ export const PetsInfoView = ({
               placeholder="Nome do bichinho"
               isRequired
             />
-            <GenericSelectInput
+            <SelectInput
+              label="Sexo"
+              control={control}
+              name="sex"
+              errorMessage="Ops, está esquecendo desse campo! 😉"
+              placeholder="Selecione..."
+              zIndex={20}
+              isRequired
+            />
+            <AutocompleteInput
+              data={autocompleteMockList}
               label="Raça"
               control={control}
               name="breed"
               errorMessage="Ops, está esquecendo desse campo! 😉"
-              placeholder="Selecione..."
+              placeholder="Digite e selecione..."
+              zIndex={10}
               isRequired
             />
             <RadioButtonInput

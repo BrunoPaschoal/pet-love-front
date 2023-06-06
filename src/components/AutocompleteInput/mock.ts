@@ -1,4 +1,4 @@
-export const mockList = [
+export const autocompleteMockList = [
   {
     name: "Labrador Retriever",
     value: 1,
