@@ -24,7 +24,7 @@ export const CareSection = () => {
         <BlogPostCard
           title="Leite de soja para doguinhos:"
           description="Confira se há recomendações."
-          uriImage="https://www.purina.com.au/-/media/project/purina/about-us/our-values-card.jpg?h=275&la=en&w=540&hash=B2F1CB046CAFABE5BA80A2B3B0D1145A"
+          uriImage="https://www.dutch.com/cdn/shop/articles/shutterstock_527964577.jpg?v=1651774162"
         />
         <BlogPostCard
           title="Posse responsável:"

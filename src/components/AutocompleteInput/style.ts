@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components/native";
 
-export const Container = styled.View`
+export const Container = styled.KeyboardAvoidingView`
   ${({ theme: { margins } }) => css`
     width: 100%;
     margin-bottom: ${margins.marginBetweenInputs};

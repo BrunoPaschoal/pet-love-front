@@ -3,7 +3,6 @@ import CloseIcon from "../../../assets/icons/close.svg";
 import { useCallback, useEffect, useState } from "react";
 import { RenderItem } from "./RenderItem";
 import { ListItemType } from "./types/AutocompleteInputTypes";
-import OutsidePressHandler from "react-native-outside-press";
 import { ScrollView } from "react-native-gesture-handler";
 import { checkIfTheyAreTheSameValues } from "../../helpers/checkIfTheyAreTheSameValues";
 import theme from "../../themes";
@@ -72,62 +71,56 @@ export const AutocompleteInputComponent = ({
   }, [verifyWhenItemIsSelected]);
 
   return (
-    <OutsidePressHandler
-      disabled={false}
-      onOutsidePress={() => null}
-      style={{ zIndex: zIndex ? zIndex : 2 }}
-    >
-      <S.Container>
-        <S.InputLabel isDisable={isDisable}>{`${label}${
-          isRequired ? "*" : ""
-        }`}</S.InputLabel>
-        <S.InputContainer>
-          {!itemSelected && (
-            <S.TextInput
-              {...InputColorsProps}
-              onFocus={onInputFocus}
-              onBlur={onInputBlur}
-              value={inputValue}
-              onChangeText={(value) => onInputChange(value)}
-              editable={!isDisable}
-              placeholder={placeholder}
-            />
-          )}
-          {itemSelected && (
-            <S.Badge>
-              <S.SeletedItemLabel>{itemSelected.name}</S.SeletedItemLabel>
-            </S.Badge>
-          )}
-
-          <S.IconContainer
-            onPress={
-              itemSelected ? () => clearSelection() : () => openOrCloseList()
-            }
-          >
-            {itemSelected && (
-              <CloseIcon width={12} height={12} fill={iconColor} />
-            )}
-          </S.IconContainer>
-        </S.InputContainer>
-        {listOpen && data?.length > 0 && (
-          <S.ListItemsContainer>
-            <ScrollView nestedScrollEnabled persistentScrollbar>
-              {data.map((item, i) => (
-                <RenderItem
-                  item={item}
-                  onSelect={onChange}
-                  key={i}
-                  isSelected={checkIfTheyAreTheSameValues(
-                    itemSelected?.value,
-                    item?.value
-                  )}
-                />
-              ))}
-            </ScrollView>
-          </S.ListItemsContainer>
+    <S.Container behavior="height" style={{ zIndex: zIndex ? zIndex : 2 }}>
+      <S.InputLabel isDisable={isDisable}>{`${label}${
+        isRequired ? "*" : ""
+      }`}</S.InputLabel>
+      <S.InputContainer>
+        {!itemSelected && (
+          <S.TextInput
+            {...InputColorsProps}
+            onFocus={onInputFocus}
+            onBlur={onInputBlur}
+            value={inputValue}
+            onChangeText={(value) => onInputChange(value)}
+            editable={!isDisable}
+            placeholder={placeholder}
+          />
         )}
-        {errorMessage ? <S.TextError>{errorMessage}</S.TextError> : null}
-      </S.Container>
-    </OutsidePressHandler>
+        {itemSelected && (
+          <S.Badge>
+            <S.SeletedItemLabel>{itemSelected.name}</S.SeletedItemLabel>
+          </S.Badge>
+        )}
+
+        <S.IconContainer
+          onPress={
+            itemSelected ? () => clearSelection() : () => openOrCloseList()
+          }
+        >
+          {itemSelected && (
+            <CloseIcon width={12} height={12} fill={iconColor} />
+          )}
+        </S.IconContainer>
+      </S.InputContainer>
+      {listOpen && data?.length > 0 && (
+        <S.ListItemsContainer>
+          <ScrollView nestedScrollEnabled persistentScrollbar>
+            {data.map((item, i) => (
+              <RenderItem
+                item={item}
+                onSelect={onChange}
+                key={i}
+                isSelected={checkIfTheyAreTheSameValues(
+                  itemSelected?.value,
+                  item?.value
+                )}
+              />
+            ))}
+          </ScrollView>
+        </S.ListItemsContainer>
+      )}
+      {errorMessage ? <S.TextError>{errorMessage}</S.TextError> : null}
+    </S.Container>
   );
 };
