@@ -9,25 +9,15 @@ import {
 } from "../../../../routes/interfaces/propsNavigationApp";
 import { PetInfoFormSubmitType } from "./interfaces/PetInfoFormSubmitType";
 import { PetsInfoView } from "./petInfoView";
+import {
+  PetAgeType,
+  PetSexType,
+  PetSize,
+} from "../../../../types/UserGlobalTypes";
 
 export const PetInfo = () => {
   const isKeyBoardOpen = useKeyboardChecker();
   const navigation = useNavigation<AppNavigationTypes>();
-
-  const petSizeOptions: RadioListOptionsType[] = [
-    {
-      optionName: "Pequeno",
-      optionValue: "SMALL",
-    },
-    {
-      optionName: "Médio",
-      optionValue: "MID",
-    },
-    {
-      optionName: "Grande",
-      optionValue: "LARGE",
-    },
-  ];
 
   const {
     params: { petType },
@@ -36,6 +26,43 @@ export const PetInfo = () => {
   const { handleSubmit, control } = useForm<PetInfoFormSubmitType>({
     mode: "onSubmit",
   });
+
+  const petSizeOptions: RadioListOptionsType[] = [
+    {
+      optionName: "Pequeno",
+      optionValue: PetSize.SMALL,
+    },
+    {
+      optionName: "Médio",
+      optionValue: PetSize.MID,
+    },
+    {
+      optionName: "Grande",
+      optionValue: PetSize.LARGE,
+    },
+  ];
+
+  const sexOptions: RadioListOptionsType[] = [
+    {
+      optionName: "Macho",
+      optionValue: PetSexType.MALE,
+    },
+    {
+      optionName: "Fêmea",
+      optionValue: PetSexType.FEMALE,
+    },
+  ];
+
+  const ageTypeOptions: RadioListOptionsType[] = [
+    {
+      optionName: "Meses",
+      optionValue: PetAgeType.MONTHS,
+    },
+    {
+      optionName: "Anos",
+      optionValue: PetAgeType.YEARS,
+    },
+  ];
 
   const onSubmitButton = (formValue: PetInfoFormSubmitType) => {
     // Navegar para a próxima tela passando os parâmetros necessários
@@ -47,7 +74,9 @@ export const PetInfo = () => {
       onSubmitButton={handleSubmit(onSubmitButton)}
       control={control}
       isKeyBoardOpen={isKeyBoardOpen}
-      radioListOptions={petSizeOptions}
+      petSizeOptions={petSizeOptions}
+      sexOptions={sexOptions}
+      ageTypeOptions={ageTypeOptions}
     />
   );
 };

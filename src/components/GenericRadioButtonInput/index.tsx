@@ -9,7 +9,7 @@ export type RadioListOptionsType = {
 
 interface RadioButtonInputProps {
   radioListOptions: RadioListOptionsType[];
-  label: string;
+  label?: string;
   name: string;
   control: Control<any, any> | undefined;
   isRequired?: boolean;
@@ -36,9 +36,11 @@ export const RadioButtonInput = ({
       }}
       render={({ field: { onChange, value }, fieldState: { error } }) => (
         <S.Container>
-          <S.LabelContainer>
-            <S.InputLabel>{`${label}${isRequired ? "*" : ""}`}</S.InputLabel>
-          </S.LabelContainer>
+          {!!label && (
+            <S.LabelContainer>
+              <S.InputLabel>{`${label}${isRequired ? "*" : ""}`}</S.InputLabel>
+            </S.LabelContainer>
+          )}
           <S.RadioListContainer>
             {radioListOptions.map((item, i) => (
               <RadioButtonComponent

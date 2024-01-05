@@ -15,14 +15,18 @@ import { autocompleteMockList } from "../../../../components/AutocompleteInput/m
 
 interface PetsInfoViewProps {
   onSubmitButton: () => void;
-  radioListOptions: RadioListOptionsType[];
-  control: Control<PetInfoFormSubmitType, any>;
+  petSizeOptions: RadioListOptionsType[];
+  ageTypeOptions: RadioListOptionsType[];
+  sexOptions: RadioListOptionsType[];
+  control: Control<PetInfoFormSubmitType>;
   isKeyBoardOpen: boolean;
 }
 
 export const PetsInfoView = ({
   onSubmitButton,
-  radioListOptions,
+  petSizeOptions,
+  ageTypeOptions,
+  sexOptions,
   control,
   isKeyBoardOpen,
 }: PetsInfoViewProps) => {
@@ -44,15 +48,30 @@ export const PetsInfoView = ({
               placeholder="Nome do bichinho"
               isRequired
             />
-            <SelectInput
-              label="Sexo"
-              control={control}
-              name="sex"
-              errorMessage="Ops, está esquecendo desse campo! 😉"
-              placeholder="Selecione..."
-              zIndex={20}
-              isRequired
-            />
+
+            <S.AgeContainer>
+              <GenericTextInput
+                containerWidth={125}
+                containerMarginRight={35}
+                label="Idade"
+                control={control}
+                name="age"
+                keyboardType="numeric"
+                errorMessage="Ops, está esquecendo desse campo! 😉"
+                placeholder="idade"
+                isRequired
+              />
+
+              <RadioButtonInput
+                radioListOptions={ageTypeOptions}
+                label="Tipo"
+                name="ageType"
+                control={control}
+                errorMessage="Não se esqueça do porte do bichinho! 😜"
+                isRequired
+              />
+            </S.AgeContainer>
+
             <AutocompleteInput
               data={autocompleteMockList}
               label="Raça"
@@ -63,10 +82,20 @@ export const PetsInfoView = ({
               zIndex={10}
               isRequired
             />
+
             <RadioButtonInput
-              radioListOptions={radioListOptions}
+              radioListOptions={sexOptions}
+              label="Sexo"
+              name="sex"
+              control={control}
+              errorMessage="Não se esqueça do porte do bichinho! 😜"
+              isRequired
+            />
+
+            <RadioButtonInput
+              radioListOptions={petSizeOptions}
               label="Porte"
-              name="petSize"
+              name="size"
               control={control}
               errorMessage="Não se esqueça do porte do bichinho! 😜"
               isRequired

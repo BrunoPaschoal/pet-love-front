@@ -28,3 +28,7 @@ export const FormContainer = styled.View`
   margin-top: 25px;
   width: 100%;
 `;
+
+export const AgeContainer = styled.View`
+  flex-direction: row;
+`;

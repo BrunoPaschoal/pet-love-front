@@ -2,17 +2,21 @@ import { ReactNode } from "react";
 import { Control, Controller } from "react-hook-form";
 import { TextInputMaskTypeProp } from "react-native-masked-text";
 import { InputTextComponent } from "./InputTextComponent";
+import { KeyboardTypeOptions } from "react-native";
 
 interface GenericTextInputProps {
   label: string;
   icon?: ReactNode;
   onIconPress?: () => void;
   hideInputValue?: boolean;
+  containerWidth?: number;
+  containerMarginRight?: number;
   name: string;
   control: Control<any, any> | undefined;
   isRequired?: boolean;
   errorMessage?: string;
   mask?: TextInputMaskTypeProp;
+  keyboardType?: KeyboardTypeOptions | undefined;
   validateField?: (value: string) => any;
   validateFailMessage?: string;
   isDisable?: boolean;
@@ -24,6 +28,9 @@ export const GenericTextInput = ({
   icon,
   onIconPress,
   hideInputValue,
+  containerMarginRight,
+  keyboardType,
+  containerWidth,
   control,
   name,
   isRequired,
@@ -56,7 +63,10 @@ export const GenericTextInput = ({
           value={value}
           onChange={onChange}
           errorMessage={error?.message}
+          containerWidth={containerWidth}
+          containerMarginRight={containerMarginRight}
           hideInputValue={hideInputValue}
+          keyboardType={keyboardType}
           icon={icon}
           onIconPress={onIconPress}
           mask={mask}

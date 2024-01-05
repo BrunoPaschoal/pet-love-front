@@ -17,6 +17,12 @@ export enum PetType {
   DOG = "DOG",
 }
 
+export enum PetSize {
+  SMALL = "SMALL",
+  MID = "MID",
+  LARGE = "LARGE",
+}
+
 export enum PetAgeType {
   YEARS = "YEARS",
   MONTHS = "MONTHS",

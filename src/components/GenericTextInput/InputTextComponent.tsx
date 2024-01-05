@@ -2,6 +2,7 @@ import * as S from "./style";
 import theme from "../../themes/index";
 import { ReactNode } from "react";
 import { TextInputMaskTypeProp } from "react-native-masked-text";
+import { KeyboardTypeOptions } from "react-native";
 
 interface GenericTextInputProps {
   label: string;
@@ -9,10 +10,13 @@ interface GenericTextInputProps {
   onIconPress?: () => void;
   isRequired?: boolean;
   hideInputValue?: boolean;
+  containerWidth?: number;
   errorMessage?: string;
   value: string;
   onChange: ((text: string) => void) | undefined;
   mask?: TextInputMaskTypeProp;
+  keyboardType?: KeyboardTypeOptions | undefined;
+  containerMarginRight?: number;
   isDisable?: boolean;
   placeholder?: string;
 }
@@ -22,9 +26,12 @@ export const InputTextComponent = ({
   icon,
   onIconPress,
   hideInputValue,
+  containerWidth,
+  containerMarginRight,
   value,
   onChange,
   errorMessage,
+  keyboardType,
   mask,
   isDisable,
   placeholder,
@@ -38,10 +45,14 @@ export const InputTextComponent = ({
     value: value,
     editable: !isDisable,
     placeholder: placeholder,
+    keyboardType: keyboardType,
   };
 
   return (
-    <S.Container>
+    <S.Container
+      containerWidth={containerWidth}
+      containerMarginRight={containerMarginRight}
+    >
       <S.InputLabel isDisable={isDisable}>{`${label}${
         isRequired ? "*" : ""
       }`}</S.InputLabel>

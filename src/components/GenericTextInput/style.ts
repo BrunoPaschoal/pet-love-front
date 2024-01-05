@@ -1,10 +1,16 @@
 import { TextInputMask } from "react-native-masked-text";
 import styled, { css } from "styled-components/native";
 
-export const Container = styled.View`
-  ${({ theme: { margins } }) => css`
-    width: 100%;
+interface ContainerProps {
+  containerWidth?: number;
+  containerMarginRight?: number;
+}
+
+export const Container = styled.View<ContainerProps>`
+  ${({ theme: { margins }, containerWidth, containerMarginRight }) => css`
+    width: ${containerWidth ? `${containerWidth}px` : "100%"};
     margin-bottom: ${margins.marginBetweenInputs};
+    margin-right: ${containerMarginRight ? `${containerMarginRight}px` : 0};
   `}
 `;
 
